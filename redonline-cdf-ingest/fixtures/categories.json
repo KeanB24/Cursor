@@ -1,0 +1,21 @@
+{
+  "data": {
+    "items": [
+      {
+        "id": "CAT-EHS-01",
+        "name": "Incident Management",
+        "code": "INC",
+        "description": "Incidents and near misses",
+        "updatedAt": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "CAT-EHS-02",
+        "name": "Procedures",
+        "code": "SOP",
+        "description": "Standard operating procedures",
+        "updatedAt": "2026-01-01T00:00:00Z"
+      }
+    ],
+    "total": 2
+  }
+}

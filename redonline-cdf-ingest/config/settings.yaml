@@ -1,0 +1,54 @@
+# Pipeline settings — replace placeholders with live CDF / Red Online values.
+
+raw:
+  database: redonline_staging
+  tables:
+    actions: actions
+    tasks: tasks
+    categories: categories
+    ingestion_state: ingestion_state
+
+data_model:
+  # Existing Action Item Management solution space / views in CDF
+  instance_space: ac_action_item_management
+  views:
+    action:
+      space: ac_action_item_management
+      external_id: Action
+      version: "1"
+    task:
+      space: ac_action_item_management
+      external_id: Task
+      version: "1"
+    category:
+      space: ac_action_item_management
+      external_id: Category
+      version: "1"
+
+entities:
+  - name: actions
+    endpoint: list_actions
+    raw_table: actions
+    view_key: action
+    id_field: id
+    watermark_field: updatedAt
+  - name: tasks
+    endpoint: list_tasks
+    raw_table: tasks
+    view_key: task
+    id_field: id
+    watermark_field: updatedAt
+  - name: categories
+    endpoint: list_categories
+    raw_table: categories
+    view_key: category
+    id_field: id
+    watermark_field: updatedAt
+
+batch:
+  raw_upsert_size: 10000
+  dm_apply_size: 1000
+
+schedule:
+  # Informational only — configure cron on Cognite Function or Windows Task Scheduler
+  suggested_cron: "0 */6 * * *"

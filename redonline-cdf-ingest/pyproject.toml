@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "redonline-cdf-ingest"
+version = "0.1.0"
+description = "Ingest Red Online EHS actions/tasks into Cognite Data Fusion Action Item Management"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "cognite-sdk>=7.0.0",
+    "httpx>=0.27.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.12.0",
+]
+
+[project.scripts]
+redonline-ingest = "redonline_cdf.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

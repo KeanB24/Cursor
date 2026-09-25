@@ -1,0 +1,43 @@
+# Map Red Online / RAW columns → Cognite Data Model view properties.
+# Keys under each view are DM property names; values are source field names
+# (from the staged RAW row / Red Online payload). Adjust to match the live model.
+
+action:
+  externalId: id
+  properties:
+    title: title
+    description: description
+    status: status
+    categoryId: categoryId
+    dueDate: dueDate
+    priority: priority
+    assignee: assignee
+    updatedAt: updatedAt
+    createdAt: createdAt
+    sourceSystem: _source_system
+
+task:
+  externalId: id
+  properties:
+    title: title
+    description: description
+    status: status
+    actionId: actionId
+    dueDate: dueDate
+    assignee: assignee
+    updatedAt: updatedAt
+    createdAt: createdAt
+    sourceSystem: _source_system
+
+category:
+  externalId: id
+  properties:
+    name: name
+    code: code
+    description: description
+    updatedAt: updatedAt
+    sourceSystem: _source_system
+
+# Constants injected into every staged / mapped row
+constants:
+  _source_system: RedOnline

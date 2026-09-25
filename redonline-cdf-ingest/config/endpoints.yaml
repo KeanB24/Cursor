@@ -1,0 +1,59 @@
+# Placeholder Red Online REST endpoint catalog.
+# Replace paths, query params, and response item paths with real API contracts.
+
+auth:
+  # How the client sends the token: bearer_header | header | query
+  style: bearer_header
+  header_name: Authorization
+  # Used when style is query
+  query_param: access_token
+
+defaults:
+  timeout_seconds: 60
+  page_size: 100
+
+endpoints:
+  list_actions:
+    method: GET
+    path: /api/v1/actions
+    # Query params sent on every request (placeholders)
+    query:
+      pageSize: "{page_size}"
+    # Incremental filter — {since} replaced with watermark ISO timestamp when present
+    since_param: updatedSince
+    # Dot-path to the list of items in the JSON response
+    items_path: data.items
+    # Pagination: none | offset | page_token | link
+    pagination:
+      type: page_token
+      next_token_path: data.nextPageToken
+      token_param: pageToken
+    # Optional fixture file used when REDONLINE_MOCK=1
+    fixture: actions.json
+
+  list_tasks:
+    method: GET
+    path: /api/v1/tasks
+    query:
+      pageSize: "{page_size}"
+    since_param: updatedSince
+    items_path: data.items
+    pagination:
+      type: page_token
+      next_token_path: data.nextPageToken
+      token_param: pageToken
+    fixture: tasks.json
+
+  list_categories:
+    method: GET
+    path: /api/v1/categories
+    query:
+      pageSize: "{page_size}"
+    since_param: updatedSince
+    items_path: data.items
+    pagination:
+      type: offset
+      offset_param: offset
+      limit_param: limit
+      total_path: data.total
+    fixture: categories.json

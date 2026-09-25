@@ -1,0 +1,31 @@
+{
+  "data": {
+    "items": [
+      {
+        "id": "ACT-1001",
+        "title": "Investigate near miss at Warehouse B",
+        "description": "Review CCTV and interview shift lead",
+        "status": "Open",
+        "categoryId": "CAT-EHS-01",
+        "dueDate": "2026-04-01",
+        "priority": "High",
+        "assignee": "j.smith",
+        "updatedAt": "2026-03-15T10:00:00Z",
+        "createdAt": "2026-03-10T08:00:00Z"
+      },
+      {
+        "id": "ACT-1002",
+        "title": "Update spill response SOP",
+        "description": "Align with corporate EHS standard",
+        "status": "InProgress",
+        "categoryId": "CAT-EHS-02",
+        "dueDate": "2026-04-15",
+        "priority": "Medium",
+        "assignee": "a.patel",
+        "updatedAt": "2026-03-18T14:30:00Z",
+        "createdAt": "2026-03-12T09:15:00Z"
+      }
+    ],
+    "nextPageToken": null
+  }
+}
