@@ -22,41 +22,13 @@ def _ensure_paths() -> None:
     os.environ.setdefault("CONFIG_DIR", str(root / "config"))
 
 
-def _load_project_dotenv(root: Path) -> None:
-    """Load root/.env so CLI matches discover_rol_schema.py behavior."""
-    env_path = root / ".env"
-    try:
-        from dotenv import load_dotenv
-
-        # utf-8-sig strips a Windows BOM that would otherwise break key names
-        load_dotenv(env_path, encoding="utf-8-sig")
-        return
-    except TypeError:
-        # Older python-dotenv without encoding= support
-        try:
-            from dotenv import load_dotenv
-
-            load_dotenv(env_path)
-            return
-        except ImportError:
-            pass
-    except ImportError:
-        pass
-
-    if not env_path.exists():
-        return
-    for line in env_path.read_text(encoding="utf-8-sig").splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, _, value = line.partition("=")
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
-
-
 def main(argv: list[str] | None = None) -> int:
     _ensure_paths()
     root = _project_root()
-    _load_project_dotenv(root)
+
+    from redonline_cdf.envfile import load_env_files
+
+    loaded_env = load_env_files(root)
 
     parser = argparse.ArgumentParser(
         description="Ingest Red Online EHS data into Cognite Action Item Management"
@@ -107,11 +79,11 @@ def main(argv: list[str] | None = None) -> int:
     token = None if mock else resolve_redonline_token()
 
     log.info(
-        "Starting ingest mock=%s dry_run=%s tls_verify=%s env=%s",
+        "Starting ingest mock=%s dry_run=%s tls_verify=%s env_files=%s",
         mock,
         args.dry_run,
         verify_ssl,
-        root / ".env",
+        [str(p) for p in loaded_env] or ["(none found)"],
     )
 
     cognite = None

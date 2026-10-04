@@ -31,15 +31,16 @@ OUT_DIR = ROOT / "samples" / "rol"
 
 
 def _load_dotenv() -> None:
-    env_path = ROOT / ".env"
-    if not env_path.exists():
-        return
-    for line in env_path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
+    """Load project `.env`, then parent workspace `.env` (first wins per key)."""
+    for env_path in (ROOT / ".env", ROOT.parent / ".env"):
+        if not env_path.is_file():
             continue
-        key, _, value = line.partition("=")
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+        for line in env_path.read_text(encoding="utf-8-sig").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, value = line.partition("=")
+            os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
 def _load_yaml(path: Path) -> dict[str, Any]:

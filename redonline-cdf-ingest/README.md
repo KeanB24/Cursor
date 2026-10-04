@@ -37,15 +37,19 @@ Configured from `hse_compliance_api_endpoints.md`:
 
 ```powershell
 cd redonline-cdf-ingest
-copy .env.example .env
 ```
 
 You must be inside the `redonline-cdf-ingest` folder (where `requirements.txt` lives).
 
-Edit `.env` and set real Cognite OIDC values (`CDF_CLIENT_ID`, `CDF_CLIENT_SECRET`, `CDF_TENANT_ID`).
-The HSE API key and base URL are already filled from the ct-test details.
+Credentials come from **`.env`** (source of truth, gitignored) — the same file kept in
+sync with the office laptop. The CLI also reads a parent-folder `.env` if present
+(e.g. `Cursor/.env` next to `redonline-cdf-ingest/`).
 
-If you skip `.env`, the client can still use `auth.api_key` from `config/endpoints.yaml`.
+Required keys: `CDF_PROJECT`, `CDF_CLIENT_ID`, `CDF_CLIENT_SECRET`, `CDF_TENANT_ID`,
+`REDONLINE_API_KEY`, `REDONLINE_BASE_URL`. For corp SSL, set `REDONLINE_VERIFY_SSL=0`.
+
+If ROL API key is missing from `.env`, the client can fall back to `auth.api_key` in
+`config/endpoints.yaml`.
 
 ### 2. Install packages (once, no virtualenv)
 
@@ -174,7 +178,7 @@ On a VM, schedule the same CLI with Windows Task Scheduler or cron.
 
 | File | What to replace |
 |------|-----------------|
-| `.env` | CDF OIDC credentials; confirm `REDONLINE_API_KEY` / site / user IDs |
+| `.env` | Source of truth for CDF + ROL credentials (keep in sync with office laptop) |
 | `config/endpoints.yaml` | Adjust `items_path` after inspecting live JSON responses |
 | `config/settings.yaml` | Real DM `instance_space`, view `external_id` / `version` |
 | `config/field_maps.yaml` | Real view property names matching the live model |
@@ -207,7 +211,8 @@ a top-level `redonline_cdf/`. Discovery/notebooks do **not** need that package.
 | Error | Fix |
 |-------|-----|
 | `No such file: requirements.txt` | `cd` into `redonline-cdf-ingest` first |
-| `Set REDONLINE_API_KEY...` | Copy `.env.example` → `.env`, or keep `auth.api_key` in `endpoints.yaml` |
+| `Set REDONLINE_API_KEY...` | Put key in project or parent `.env`, or keep `auth.api_key` in `endpoints.yaml` |
+| `Missing Cognite credentials... CDF_CLIENT_ID` | Full run needs CDF_* in `.env` (`--dry-run` skips Cognite). Confirm `env_files=` in the startup log. |
 | `REDONLINE_BASE_URL is required` | Set in `.env` or `base_url` in `endpoints.yaml` |
 | `CERTIFICATE_VERIFY_FAILED` | Use `--insecure` on both discovery and ingest (`python scripts/run_local.py --dry-run --insecure`), or set `REDONLINE_VERIFY_SSL=0` in project-root `.env` |
 | Hard to debug ingest pipeline | Prefer `notebooks/call_rol_apis.ipynb` or `discover_rol_schema.py` first |

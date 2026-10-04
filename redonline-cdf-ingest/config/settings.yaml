@@ -2,7 +2,7 @@
 # First wave: RAW staging only (data model load disabled until views are confirmed)
 
 cognite:
-  project: celanese
+  project: celanese-dev
   cluster: az-eastus-1
   base_url: https://az-eastus-1.cognitedata.com
 

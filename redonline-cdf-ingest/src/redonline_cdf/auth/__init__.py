@@ -48,8 +48,8 @@ def create_cognite_client() -> CogniteClient:
             "Missing Cognite credentials in .env (required for RAW write, "
             "not needed for --dry-run): "
             + ", ".join(missing)
-            + ". Copy from .env.example or set them manually, then re-run "
-            "without --dry-run."
+            + ". Put them in `redonline-cdf-ingest/.env` (or the parent "
+            "workspace `.env`), then re-run without --dry-run."
         )
 
     token_url = os.getenv(

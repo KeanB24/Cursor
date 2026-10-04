@@ -15,17 +15,20 @@ Ingest HSE / Red Online (ROL) data into Cognite Data Fusion RAW DB **`ROL-COR`**
 - Flatteners → Uppercase RAW tables in `ROL-COR`.
 - First wave: **RAW only** (`load_to_data_model: false`).
 
-## Credentials / endpoints (also in `.env` / config)
+## Credentials / endpoints (source of truth: `.env`)
+Keep `redonline-cdf-ingest/.env` in sync with the office laptop (also accepted: parent `Cursor/.env`).
+Do **not** treat `.env.example` as the credential source.
+
 | Item | Value |
 |------|--------|
 | ROL base | `https://apigw.ct-test.hse-compliance.net` |
-| ROL auth | Header `X-ROL-API-KEY` = `9f5ef52b-b98d-4cdb-9672-e423cc9051d5` |
-| CDF project | `celanese` |
+| ROL auth | Header `X-ROL-API-KEY` (from `.env` `REDONLINE_API_KEY`) |
+| CDF project | `celanese-dev` |
 | CDF cluster | `az-eastus-1` |
-| CDF client id | `cb909a16-1087-4e06-9d11-8dfbd6ae1a5c` |
-| CDF tenant | `7a3c88ff-a5f6-449d-ac6d-e8e3aa508e37` |
-| CDF secret | in `.env` — Azure may reject if expired (`AADSTS7000215`); rotate if needed |
-| Corp SSL | `REDONLINE_VERIFY_SSL=0` in `.env`, or `--insecure` on **both** `discover_rol_schema.py` and `run_local.py` |
+| CDF client id | from `.env` `CDF_CLIENT_ID` |
+| CDF tenant | from `.env` `CDF_TENANT_ID` |
+| CDF secret | from `.env` `CDF_CLIENT_SECRET` — Azure may reject if expired (`AADSTS7000215`) |
+| Corp SSL | `REDONLINE_VERIFY_SSL=0` in `.env`, or `--insecure` on **both** discover + `run_local.py` |
 
 ## ROL APIs
 1. `GET /v2/secure-clients/legapi-general/sites` → items at `sites`
@@ -64,7 +67,7 @@ No venv required. From `redonline-cdf-ingest/`:
 ```powershell
 python -m pip install -r requirements.txt
 python -m pip install -e .
-copy .env.example .env   # if missing
+# ensure .env is present (project and/or parent workspace) — not .env.example
 python scripts/discover_rol_schema.py --insecure
 python scripts/run_local.py --mock --dry-run
 python scripts/run_local.py --dry-run --insecure   # live ROL, no CDF write
@@ -72,9 +75,11 @@ python scripts/run_local.py --insecure             # live ROL + CDF RAW write
 ```
 
 ## Key files
-- `config/settings.yaml` — ROL-COR tables, cascaded limits, DM flag
+- `.env` — credential source of truth (gitignored); also parent workspace `.env`
+- `config/settings.yaml` — ROL-COR tables, cascaded limits, DM flag (`cognite.project: celanese-dev`)
 - `config/endpoints.yaml` — paths, auth, items_path
 - `config/field_maps.yaml` — DM mapping (unused while RAW-only)
+- `src/redonline_cdf/envfile.py` — loads project + parent `.env`
 - `src/redonline_cdf/pipeline/ingest.py` — cascaded orchestration
 - `src/redonline_cdf/pipeline/flatten.py` — nested → RAW rows
 - `scripts/discover_rol_schema.py` — standalone discovery
@@ -86,7 +91,7 @@ python scripts/run_local.py --insecure             # live ROL + CDF RAW write
 - `CERTIFICATE_VERIFY_FAILED` on dry-run → discovery had `--insecure` but ingest CLI did not; use `run_local.py --insecure` (now synced) / `REDONLINE_VERIFY_SSL=0`
 - `samples/rol/` missing after pull → was gitignored; ignore removed
 - Cognite secret invalid (`AADSTS7000215`) → may need new Azure client secret
-- `KeyError: CDF_CLIENT_ID` / missing Cognite creds → `--dry-run` skips CDF; full run needs `CDF_PROJECT`, `CDF_CLIENT_ID`, `CDF_CLIENT_SECRET`, `CDF_TENANT_ID` in project-root `.env` (copy from `.env.example`)
+- `KeyError: CDF_CLIENT_ID` → stale/wrong `.env` (example vs real); loaders now use project + parent `.env`; project is `celanese-dev`
 - Complex imports confused user → discovery/notebook are standalone; package is under `src/`
 
 ## Next work for new agent
@@ -98,4 +103,4 @@ python scripts/run_local.py --insecure             # live ROL + CDF RAW write
 
 ## Do not
 - Do not redeploy/create the Action Item Management data model (already exists).
-- Do not commit secrets carelessly; `.env` is gitignored (`.env.example` currently mirrors values for portability).
+- Do not commit secrets carelessly; `.env` is gitignored. `.env.example` is an empty-key template only.
