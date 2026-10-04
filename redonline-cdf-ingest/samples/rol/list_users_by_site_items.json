@@ -1,0 +1,1958 @@
+[
+  {
+    "id_user": 156028,
+    "firstname": "Monika",
+    "lastname": "Hess",
+    "user_name": "Monika Hess",
+    "email": "monika.hess@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 6,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 5,
+        "name": "ROL_Model_Profile_5"
+      }
+    ]
+  },
+  {
+    "id_user": 506569,
+    "firstname": "Raoul",
+    "lastname": "Asnong",
+    "user_name": "Raoul Asnong",
+    "email": "raoul.asnong@celanese.com",
+    "id_langue": 22,
+    "language": "en",
+    "locale": "en_GB.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 5,
+        "name": "ROL_Model_Profile_5"
+      },
+      {
+        "id_profile": 29,
+        "name": "ROL_Model_Profile_29"
+      }
+    ]
+  },
+  {
+    "id_user": 542469,
+    "firstname": "AAROLADMIN",
+    "lastname": "Celanese",
+    "user_name": "AAROLADMIN Celanese",
+    "email": "andrew.bloom+4243@red-on-line.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 28,
+        "name": "ROL_Model_Profile_28"
+      }
+    ]
+  },
+  {
+    "id_user": 156034,
+    "firstname": "Monique",
+    "lastname": "van Loo",
+    "user_name": "Monique van Loo",
+    "email": "monique.van.loo@celanese.com",
+    "id_langue": 14,
+    "language": "nl",
+    "locale": "nl_NL.UTF8",
+    "id_ref_status": 6,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 55,
+        "name": "ROL_Model_Profile_55"
+      }
+    ]
+  },
+  {
+    "id_user": 580404,
+    "firstname": "Cory",
+    "lastname": "Bean",
+    "user_name": "Cory Bean",
+    "email": "cory.bean@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 5,
+        "name": "ROL_Model_Profile_5"
+      }
+    ]
+  },
+  {
+    "id_user": 542476,
+    "firstname": "Chau",
+    "lastname": "Nguyen",
+    "user_name": "Chau Nguyen",
+    "email": "chau.nguyen@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 5,
+        "name": "ROL_Model_Profile_5"
+      }
+    ]
+  },
+  {
+    "id_user": 542478,
+    "firstname": "Frank",
+    "lastname": "Tornetta",
+    "user_name": "Frank Tornetta",
+    "email": "francis.tornetta@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 5,
+        "name": "ROL_Model_Profile_5"
+      }
+    ]
+  },
+  {
+    "id_user": 542470,
+    "firstname": "Hector",
+    "lastname": "Gonzales",
+    "user_name": "Hector Gonzales",
+    "email": "hector.gonzales@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 5,
+        "name": "ROL_Model_Profile_5"
+      }
+    ]
+  },
+  {
+    "id_user": 542481,
+    "firstname": "Lisa",
+    "lastname": "Gideon",
+    "user_name": "Lisa Gideon",
+    "email": "lisa.gideon@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 5,
+        "name": "ROL_Model_Profile_5"
+      }
+    ]
+  },
+  {
+    "id_user": 582636,
+    "firstname": "Alain",
+    "lastname": "Fisscher",
+    "user_name": "Alain Fisscher",
+    "email": "alain.fisscher@celanese.com",
+    "id_langue": 14,
+    "language": "nl",
+    "locale": "nl_NL.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 55,
+        "name": "ROL_Model_Profile_55"
+      }
+    ]
+  },
+  {
+    "id_user": 584646,
+    "firstname": "Neelkantho",
+    "lastname": "Bose",
+    "user_name": "Neelkantho Bose",
+    "email": "neel.bose@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 5,
+        "name": "ROL_Model_Profile_5"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 587516,
+    "firstname": "Alexander",
+    "lastname": "Dardras",
+    "user_name": "Alexander Dardras",
+    "email": "alexander.dardras@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 6,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 156031,
+    "firstname": "Geert",
+    "lastname": "Gregoire",
+    "user_name": "Geert Gregoire",
+    "email": "geert.gregoire@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 6,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 55,
+        "name": "ROL_Model_Profile_55"
+      }
+    ]
+  },
+  {
+    "id_user": 588448,
+    "firstname": "Alma",
+    "lastname": "Chen",
+    "user_name": "Alma Chen",
+    "email": "alma.chen@celanese.com",
+    "id_langue": 22,
+    "language": "en",
+    "locale": "en_GB.UTF8",
+    "id_ref_status": 6,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 587992,
+    "firstname": "Xiaoxi Simon",
+    "lastname": "Wu",
+    "user_name": "Xiaoxi Simon Wu",
+    "email": "xiaoxi.wu@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 5,
+        "name": "ROL_Model_Profile_5"
+      }
+    ]
+  },
+  {
+    "id_user": 594035,
+    "firstname": "ROL",
+    "lastname": "Training",
+    "user_name": "ROL Training",
+    "email": "training+042@red-on-line.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 5,
+        "name": "ROL_Model_Profile_5"
+      },
+      {
+        "id_profile": 55,
+        "name": "ROL_Model_Profile_55"
+      }
+    ]
+  },
+  {
+    "id_user": 594142,
+    "firstname": "Brahmanandam",
+    "lastname": "Bodapati",
+    "user_name": "Brahmanandam Bodapati",
+    "email": "brahmanandam.bodapati@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 6,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 594207,
+    "firstname": "Kristina",
+    "lastname": "Geelmuyden Karlsson",
+    "user_name": "Kristina Geelmuyden Karlsson",
+    "email": "kristina.geelmuyden_karlsson@celanese.com",
+    "id_langue": 9,
+    "language": "sv",
+    "locale": "sv_SE.UTF8",
+    "id_ref_status": 6,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 55,
+        "name": "ROL_Model_Profile_55"
+      },
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      }
+    ]
+  },
+  {
+    "id_user": 595968,
+    "firstname": "AAAROLADMIN",
+    "lastname": "Celanese",
+    "user_name": "AAAROLADMIN Celanese",
+    "email": "rol.admin@rol.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 28,
+        "name": "ROL_Model_Profile_28"
+      }
+    ]
+  },
+  {
+    "id_user": 600578,
+    "firstname": "Darren",
+    "lastname": "Hubbard",
+    "user_name": "Darren Hubbard",
+    "email": "darren.hubbard@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 600972,
+    "firstname": "Joe",
+    "lastname": "Sasso",
+    "user_name": "Joe Sasso",
+    "email": "joseph.sasso@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 600976,
+    "firstname": "Marco",
+    "lastname": "Vela",
+    "user_name": "Marco Vela",
+    "email": "marco.vela@celanese.com",
+    "id_langue": 22,
+    "language": "en",
+    "locale": "en_GB.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 600986,
+    "firstname": "John",
+    "lastname": "King",
+    "user_name": "John King",
+    "email": "john.king@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 600990,
+    "firstname": "Amy ",
+    "lastname": "Prescott",
+    "user_name": "Amy  Prescott",
+    "email": "amy.prescott@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 600977,
+    "firstname": "Jordi",
+    "lastname": "Costa Sala",
+    "user_name": "Jordi Costa Sala",
+    "email": "jordi.costasala@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 55,
+        "name": "ROL_Model_Profile_55"
+      }
+    ]
+  },
+  {
+    "id_user": 600981,
+    "firstname": "Amy",
+    "lastname": "Thornberry",
+    "user_name": "Amy Thornberry",
+    "email": "amy.thornberry@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 604108,
+    "firstname": "Carlos",
+    "lastname": "Evans",
+    "user_name": "Carlos Evans",
+    "email": "carlos.evans@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 604447,
+    "firstname": "Rudolf",
+    "lastname": "Van Dyck",
+    "user_name": "Rudolf Van Dyck",
+    "email": "rudolf.vandyck@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 605385,
+    "firstname": "Xiaoyun",
+    "lastname": "Qin",
+    "user_name": "Xiaoyun Qin",
+    "email": "xiaoyun.qin@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 6,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 606050,
+    "firstname": "Phyllis",
+    "lastname": "Haagmans",
+    "user_name": "Phyllis Haagmans",
+    "email": "phyllis.haagmans@celanese.com",
+    "id_langue": 14,
+    "language": "nl",
+    "locale": "nl_NL.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 55,
+        "name": "ROL_Model_Profile_55"
+      }
+    ]
+  },
+  {
+    "id_user": 606277,
+    "firstname": "Andy",
+    "lastname": "Chang",
+    "user_name": "Andy Chang",
+    "email": "andy.chang@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 606293,
+    "firstname": "Yu Gang",
+    "lastname": "Wang",
+    "user_name": "Yu Gang Wang",
+    "email": "yugang.wang@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 606645,
+    "firstname": "Joel",
+    "lastname": "Solis Adame",
+    "user_name": "Joel Solis Adame",
+    "email": "joel.solis@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 606652,
+    "firstname": "Matteo",
+    "lastname": "Gerbaldo",
+    "user_name": "Matteo Gerbaldo",
+    "email": "matteo.gerbaldo@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 606705,
+    "firstname": "Alexander",
+    "lastname": "Haywood",
+    "user_name": "Alexander Haywood",
+    "email": "alexander.haywood@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 606708,
+    "firstname": "Derek",
+    "lastname": "Coffey",
+    "user_name": "Derek Coffey",
+    "email": "derek.coffey@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 606927,
+    "firstname": "Ana",
+    "lastname": "Vela Velazquez",
+    "user_name": "Ana Vela Velazquez",
+    "email": "ana.vela@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 55,
+        "name": "ROL_Model_Profile_55"
+      }
+    ]
+  },
+  {
+    "id_user": 607176,
+    "firstname": "Fung",
+    "lastname": "Ho",
+    "user_name": "Fung Ho",
+    "email": "fung.ho@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 606930,
+    "firstname": "James",
+    "lastname": "Deck",
+    "user_name": "James Deck",
+    "email": "james.deck1@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 55,
+        "name": "ROL_Model_Profile_55"
+      }
+    ]
+  },
+  {
+    "id_user": 607388,
+    "firstname": "Ronald",
+    "lastname": "Nowetner",
+    "user_name": "Ronald Nowetner",
+    "email": "ron.nowetner@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 607392,
+    "firstname": "Ying",
+    "lastname": "Xia",
+    "user_name": "Ying Xia",
+    "email": "catherine.xia@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 607918,
+    "firstname": "Stephen",
+    "lastname": "Davies",
+    "user_name": "Stephen Davies",
+    "email": "stephen.davies@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 607922,
+    "firstname": "Travis",
+    "lastname": "Robertson",
+    "user_name": "Travis Robertson",
+    "email": "travis.robertson@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 607991,
+    "firstname": "Brian",
+    "lastname": "Perdue",
+    "user_name": "Brian Perdue",
+    "email": "brian.perdue@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608237,
+    "firstname": "Xueming",
+    "lastname": "Wu",
+    "user_name": "Xueming Wu",
+    "email": "xueming.wu@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608371,
+    "firstname": "Brandon",
+    "lastname": "Chauncey",
+    "user_name": "Brandon Chauncey",
+    "email": "brandon.chauncey@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608530,
+    "firstname": "Earl",
+    "lastname": "Spencer III",
+    "user_name": "Earl Spencer III",
+    "email": "earl.t.spencer@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608532,
+    "firstname": "James",
+    "lastname": "LeHew",
+    "user_name": "James LeHew",
+    "email": "james.lehew@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 187,
+        "name": "ROL_Model_Profile_187"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608535,
+    "firstname": "Dwayne",
+    "lastname": "Knight",
+    "user_name": "Dwayne Knight",
+    "email": "dwayne.knight@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 187,
+        "name": "ROL_Model_Profile_187"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608595,
+    "firstname": "Jared",
+    "lastname": "Bears",
+    "user_name": "Jared Bears",
+    "email": "jared.bears@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 187,
+        "name": "ROL_Model_Profile_187"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608598,
+    "firstname": "Joshua",
+    "lastname": "Kuechenberg",
+    "user_name": "Joshua Kuechenberg",
+    "email": "josh.kuechenberg@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608786,
+    "firstname": "Rebecca",
+    "lastname": "Hoover",
+    "user_name": "Rebecca Hoover",
+    "email": "rebecca.hoover@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608866,
+    "firstname": "Gerald",
+    "lastname": "Brown",
+    "user_name": "Gerald Brown",
+    "email": "gerald.brown@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608885,
+    "firstname": "Mike",
+    "lastname": "Thornhill",
+    "user_name": "Mike Thornhill",
+    "email": "mike.thornhill@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608890,
+    "firstname": "Mark",
+    "lastname": "Denby",
+    "user_name": "Mark Denby",
+    "email": "mark.denby@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608896,
+    "firstname": "Charles",
+    "lastname": "White",
+    "user_name": "Charles White",
+    "email": "charles.white@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608901,
+    "firstname": "Tracy",
+    "lastname": "Freeman",
+    "user_name": "Tracy Freeman",
+    "email": "trey.freeman@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608907,
+    "firstname": "Jason",
+    "lastname": "Spicer",
+    "user_name": "Jason Spicer",
+    "email": "jason.spicer_contractor@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608913,
+    "firstname": "Kris",
+    "lastname": "Blankenship",
+    "user_name": "Kris Blankenship",
+    "email": "kris.blankenship@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608917,
+    "firstname": "John",
+    "lastname": "Walkup",
+    "user_name": "John Walkup",
+    "email": "john.walkup@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608956,
+    "firstname": "Sheng",
+    "lastname": "Ning",
+    "user_name": "Sheng Ning",
+    "email": "sheng.ning@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 608988,
+    "firstname": "Joshua",
+    "lastname": "Wagner",
+    "user_name": "Joshua Wagner",
+    "email": "joshua.wagner@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 609175,
+    "firstname": "Juan",
+    "lastname": "Velez",
+    "user_name": "Juan Velez",
+    "email": "juan.velez@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 609215,
+    "firstname": "Brian",
+    "lastname": "Farley",
+    "user_name": "Brian Farley",
+    "email": "brian.farley@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 609408,
+    "firstname": "Barnes",
+    "lastname": "Michael",
+    "user_name": "Barnes Michael",
+    "email": "michael.barnes@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 609473,
+    "firstname": "Su Yue",
+    "lastname": "Li",
+    "user_name": "Su Yue Li",
+    "email": "suyue.li@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 609545,
+    "firstname": "Hanssen",
+    "lastname": "Laurent",
+    "user_name": "Hanssen Laurent",
+    "email": "laurent.hanssen@celanese.com",
+    "id_langue": 14,
+    "language": "nl",
+    "locale": "nl_NL.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 609548,
+    "firstname": "Trinity N",
+    "lastname": "Hale ",
+    "user_name": "Trinity N Hale",
+    "email": "trinity.hale@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 609734,
+    "firstname": "Augustine",
+    "lastname": "Ajah",
+    "user_name": "Augustine Ajah",
+    "email": "augustine.ajah@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 609836,
+    "firstname": "Cindy",
+    "lastname": "Elvira",
+    "user_name": "Cindy Elvira",
+    "email": "cindy.elvira_contractor@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 604433,
+    "firstname": "Nicholas",
+    "lastname": "Klein",
+    "user_name": "Nicholas Klein",
+    "email": "nicholas.klein@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 55,
+        "name": "ROL_Model_Profile_55"
+      }
+    ]
+  },
+  {
+    "id_user": 610076,
+    "firstname": "Joshua",
+    "lastname": "Wolfe",
+    "user_name": "Joshua Wolfe",
+    "email": "joshua.wolfe@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 610523,
+    "firstname": "Noufou",
+    "lastname": "Loure",
+    "user_name": "Noufou Loure",
+    "email": "noufou.loure@celanese.com",
+    "id_langue": 4,
+    "language": "it",
+    "locale": "it_IT.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 610754,
+    "firstname": "Tony",
+    "lastname": "Carbaugh",
+    "user_name": "Tony Carbaugh",
+    "email": "tony.carbaugh@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 611057,
+    "firstname": "Kevin",
+    "lastname": "Sproull",
+    "user_name": "Kevin Sproull",
+    "email": "kevin.sproull@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 611795,
+    "firstname": "Jian",
+    "lastname": "Yang",
+    "user_name": "Jian Yang",
+    "email": "jian.yang@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 611879,
+    "firstname": "Alex",
+    "lastname": "Guest",
+    "user_name": "Alex Guest",
+    "email": "alex.guest@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612086,
+    "firstname": "Robson",
+    "lastname": "Ramos",
+    "user_name": "Robson Ramos",
+    "email": "robson.ramos@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 55,
+        "name": "ROL_Model_Profile_55"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612089,
+    "firstname": "Hugo Rafael",
+    "lastname": "Garcia Andarcia",
+    "user_name": "Hugo Rafael Garcia Andarcia",
+    "email": "hugorafael.garciaandarcia@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612134,
+    "firstname": "Norma",
+    "lastname": "Jimenez",
+    "user_name": "Norma Jimenez",
+    "email": "norma.jimenez@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612233,
+    "firstname": "David",
+    "lastname": "Ramirez",
+    "user_name": "David Ramirez",
+    "email": "david.ramirez@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612236,
+    "firstname": "Anthony",
+    "lastname": "Forsythe",
+    "user_name": "Anthony Forsythe",
+    "email": "anthony.forsythe@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612239,
+    "firstname": "Nidia Kristel",
+    "lastname": "Magana",
+    "user_name": "Nidia Kristel Magana",
+    "email": "nidiakristel.magana@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612242,
+    "firstname": "Qi Liang",
+    "lastname": "Yang",
+    "user_name": "Qi Liang Yang",
+    "email": "qiliang.yang@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612515,
+    "firstname": "John",
+    "lastname": "Hunter",
+    "user_name": "John Hunter",
+    "email": "john.hunter@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612692,
+    "firstname": "Timothy",
+    "lastname": "Brungs",
+    "user_name": "Timothy Brungs",
+    "email": "timothy.brungs@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612725,
+    "firstname": "Andrew",
+    "lastname": "Gerrein",
+    "user_name": "Andrew Gerrein",
+    "email": "andrew.gerrein@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612746,
+    "firstname": "Carlos Enrique",
+    "lastname": "Ramos Avila",
+    "user_name": "Carlos Enrique Ramos Avila",
+    "email": "carlos.ramos@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612752,
+    "firstname": "Kera",
+    "lastname": "Studer",
+    "user_name": "Kera Studer",
+    "email": "kera.studer@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612755,
+    "firstname": "Min",
+    "lastname": "Yu",
+    "user_name": "Min Yu",
+    "email": "min.yu@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 612830,
+    "firstname": "Matthew",
+    "lastname": "Jackson",
+    "user_name": "Matthew Jackson",
+    "email": "matthew.jackson@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 613190,
+    "firstname": "Stefan",
+    "lastname": "Nogai",
+    "user_name": "Stefan Nogai",
+    "email": "stefan.nogai@celanese.com",
+    "id_langue": 5,
+    "language": "de",
+    "locale": "de_DE.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 613307,
+    "firstname": "William",
+    "lastname": "Alexander",
+    "user_name": "William Alexander",
+    "email": "william.alexander@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 613415,
+    "firstname": "Maria",
+    "lastname": "Bernal",
+    "user_name": "Maria Bernal",
+    "email": "maria.bernal@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 613919,
+    "firstname": "Yayan",
+    "lastname": "Xu",
+    "user_name": "Yayan Xu",
+    "email": "yayan.xu@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 613952,
+    "firstname": "Gregorio",
+    "lastname": "Aguilar",
+    "user_name": "Gregorio Aguilar",
+    "email": "gregorio.aguilar@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 614015,
+    "firstname": "Marshall",
+    "lastname": "Lewis",
+    "user_name": "Marshall Lewis",
+    "email": "marshall.lewis@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 57,
+        "name": "ROL_Model_Profile_57"
+      },
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 614072,
+    "firstname": "Thomas",
+    "lastname": "McKiddy",
+    "user_name": "Thomas McKiddy",
+    "email": "tom.mckiddy@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 1,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 631440,
+    "firstname": "Chau",
+    "lastname": "Nguyen",
+    "user_name": "Chau Nguyen",
+    "email": "chau.nguyen@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 6,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  },
+  {
+    "id_user": 631443,
+    "firstname": "Neelkantho",
+    "lastname": "Bose",
+    "user_name": "Neelkantho Bose",
+    "email": "neel.bose+inactif@celanese.com",
+    "id_langue": 2,
+    "language": "en",
+    "locale": "en_US.UTF8",
+    "id_ref_status": 6,
+    "id_client": 4243,
+    "profiles": [
+      {
+        "id_profile": 33,
+        "name": "ROL_Model_Profile_33"
+      }
+    ]
+  }
+]

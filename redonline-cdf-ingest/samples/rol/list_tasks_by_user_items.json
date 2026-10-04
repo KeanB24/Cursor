@@ -1,0 +1,976 @@
+[
+  {
+    "id": 186663,
+    "title": "Ensure compliance with ADR requirements for consignments of dangerous goods.",
+    "description": "Ensure compliance with ADR requirements for consignments of dangerous goods.\n\n- Ascertain that dangerous goods are classified and authorized for carriage according to ADR.\n- Provide the carrier with necessary information, data, and transport documents in a traceable form.\n- Use approved and suitable packagings, large packagings, IBCs, and tanks marked as per ADR.\n- Adhere to dispatch and forwarding restrictions.\n- Ensure empty uncleaned tanks and vehicles are placarded, marked, labelled, closed, and leakproof as if full.\n- For tank-containers and portable tanks with refrigerated liquefied gases, determine the actual holding time or reduce pressure for empty, uncleaned tanks.\n\nComment on frequency:\nReview of current DGSA legal requirements\nReview of any applicable Celanese Tier Two requirements\nReview of any applicable Spondon Tier Three requirements\n\nComment about previous check:\nCheck on the closure progress of the outstanding actions raised in the DGSA audit",
+    "type_id": 3,
+    "category": 1,
+    "priority": 0,
+    "recurring_frequency_rule": "YEARLY",
+    "recurring_interval_rule": 5,
+    "recurring_count_rule": null,
+    "recurring_start_date_rule": "2030-07-16T00:00:00.000000Z",
+    "recurring_end_date_rule": null,
+    "due_scheduled_at": "2030-07-16T00:00:00.000000Z",
+    "rescheduled_at": null,
+    "internal_code": null,
+    "scope": 1,
+    "state": 2,
+    "perimeter_state": 2,
+    "criticality": 1,
+    "temporal_criticality": "temporalCriticality.onTrack",
+    "created_by": 12,
+    "updated_by": null,
+    "author_name": "Unknown User",
+    "updater_name": null,
+    "created_at": "2026-03-25T17:15:05.000000Z",
+    "updated_at": "2026-06-23T14:04:46.000000Z",
+    "created_from": "systems",
+    "updated_from": null,
+    "attachments": [],
+    "instances": [
+      {
+        "id": 186852,
+        "site": {
+          "id_site": 1617578,
+          "name": "SPO - Spondon",
+          "id_country": 8,
+          "country_name": "United Kingdom",
+          "is_active": true
+        },
+        "owners": [
+          {
+            "id": 185589,
+            "user_id": 582639,
+            "user_name": "Matt Cadogan",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "reviewers": [],
+        "occurrences": [
+          {
+            "id": 186010,
+            "instance_id": 186852,
+            "attachments": [],
+            "due_scheduled_at": "2030-07-16T00:00:00.000000Z",
+            "original_due_scheduled_at": "2030-07-16T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": 12,
+            "updated_by": null
+          },
+          {
+            "id": 724380,
+            "instance_id": 186852,
+            "attachments": [],
+            "due_scheduled_at": "2035-07-16T00:00:00.000000Z",
+            "original_due_scheduled_at": "2035-07-16T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": null,
+            "updated_by": null
+          }
+        ],
+        "temporal_criticality": "temporalCriticality.onTrack",
+        "state": 2,
+        "created_by": 12,
+        "updated_by": null
+      }
+    ],
+    "references": [
+      {
+        "reference_type_id": 2,
+        "references_nb": 1
+      }
+    ],
+    "references_nb": 1
+  },
+  {
+    "id": 186664,
+    "title": "Notify the scheme administrator of your compliance.",
+    "description": "Notify the scheme administrator of your compliance.\n\n- Notify the scheme administrator of your compliance to avoid penalties.\n- Be aware that failure to notify can result in financial penalties and a publication penalty.\n\nComment on frequency:\nTest - To be updated\n\nComment about previous check:\nTest - To be updated",
+    "type_id": 3,
+    "category": 1,
+    "priority": 0,
+    "recurring_frequency_rule": "YEARLY",
+    "recurring_interval_rule": 2,
+    "recurring_count_rule": null,
+    "recurring_start_date_rule": "2027-07-09T00:00:00.000000Z",
+    "recurring_end_date_rule": null,
+    "due_scheduled_at": "2027-07-09T00:00:00.000000Z",
+    "rescheduled_at": null,
+    "internal_code": null,
+    "scope": 1,
+    "state": 2,
+    "perimeter_state": 2,
+    "criticality": 1,
+    "temporal_criticality": "temporalCriticality.onTrack",
+    "created_by": 12,
+    "updated_by": null,
+    "author_name": "Unknown User",
+    "updater_name": null,
+    "created_at": "2026-03-25T17:15:07.000000Z",
+    "updated_at": "2026-06-23T14:04:47.000000Z",
+    "created_from": "systems",
+    "updated_from": null,
+    "attachments": [],
+    "instances": [
+      {
+        "id": 186853,
+        "site": {
+          "id_site": 1617578,
+          "name": "SPO - Spondon",
+          "id_country": 8,
+          "country_name": "United Kingdom",
+          "is_active": true
+        },
+        "owners": [
+          {
+            "id": 185590,
+            "user_id": 582639,
+            "user_name": "Matt Cadogan",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "reviewers": [],
+        "occurrences": [
+          {
+            "id": 186011,
+            "instance_id": 186853,
+            "attachments": [],
+            "due_scheduled_at": "2027-07-09T00:00:00.000000Z",
+            "original_due_scheduled_at": "2027-07-09T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": 12,
+            "updated_by": null
+          },
+          {
+            "id": 724381,
+            "instance_id": 186853,
+            "attachments": [],
+            "due_scheduled_at": "2029-07-09T00:00:00.000000Z",
+            "original_due_scheduled_at": "2029-07-09T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": null,
+            "updated_by": null
+          }
+        ],
+        "temporal_criticality": "temporalCriticality.onTrack",
+        "state": 2,
+        "created_by": 12,
+        "updated_by": null
+      }
+    ],
+    "references": [
+      {
+        "reference_type_id": 2,
+        "references_nb": 1
+      }
+    ],
+    "references_nb": 1
+  },
+  {
+    "id": 186665,
+    "title": "Develop a written plan for employee participation in process safety management.",
+    "description": "Develop a written plan for employee participation in process safety management.\n\n- Develop a written plan of action for implementing employee participation.\n- Consult with employees and their representatives on process hazards analyses and other elements of process safety management.\n- Provide employees and their representatives access to process hazard analyses and all other required information.",
+    "type_id": 3,
+    "category": 1,
+    "priority": 0,
+    "recurring_frequency_rule": "YEARLY",
+    "recurring_interval_rule": 3,
+    "recurring_count_rule": null,
+    "recurring_start_date_rule": "2029-02-20T00:00:00.000000Z",
+    "recurring_end_date_rule": null,
+    "due_scheduled_at": "2029-02-20T00:00:00.000000Z",
+    "rescheduled_at": null,
+    "internal_code": null,
+    "scope": 1,
+    "state": 2,
+    "perimeter_state": 2,
+    "criticality": 1,
+    "temporal_criticality": "temporalCriticality.onTrack",
+    "created_by": 12,
+    "updated_by": null,
+    "author_name": "Unknown User",
+    "updater_name": null,
+    "created_at": "2026-03-25T17:15:09.000000Z",
+    "updated_at": "2026-06-23T14:04:47.000000Z",
+    "created_from": "systems",
+    "updated_from": null,
+    "attachments": [],
+    "instances": [
+      {
+        "id": 186854,
+        "site": {
+          "id_site": 1617589,
+          "name": "BIS - Bishop",
+          "id_country": 29,
+          "country_name": "United States of America",
+          "is_active": true
+        },
+        "owners": [
+          {
+            "id": 185591,
+            "user_id": 593093,
+            "user_name": "Delfino Salazar Gomez",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "reviewers": [
+          {
+            "id": 183719,
+            "user_id": 594152,
+            "user_name": "Cristiano Oliveira",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "occurrences": [
+          {
+            "id": 186012,
+            "instance_id": 186854,
+            "attachments": [],
+            "due_scheduled_at": "2029-02-20T00:00:00.000000Z",
+            "original_due_scheduled_at": "2029-02-20T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": 12,
+            "updated_by": null
+          },
+          {
+            "id": 724382,
+            "instance_id": 186854,
+            "attachments": [],
+            "due_scheduled_at": "2032-02-20T00:00:00.000000Z",
+            "original_due_scheduled_at": "2032-02-20T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": null,
+            "updated_by": null
+          }
+        ],
+        "temporal_criticality": "temporalCriticality.onTrack",
+        "state": 2,
+        "created_by": 12,
+        "updated_by": null
+      }
+    ],
+    "references": [
+      {
+        "reference_type_id": 2,
+        "references_nb": 1
+      }
+    ],
+    "references_nb": 1
+  },
+  {
+    "id": 186666,
+    "title": "Complete a compilation of written process safety information before conducting any process hazard analysis.",
+    "description": "Complete a compilation of written process safety information before conducting any process hazard analysis.\n\n- Compile written process safety information to identify and understand hazards of processes involving highly hazardous chemicals.\n- Include information on the hazards of the chemicals, such as toxicity, permissible exposure limits, physical data, reactivity, corrosivity, stability, and hazardous effects of mixing materials.\n- Include information on the technology of the process, such as flow diagrams, process chemistry, inventory limits, safe operating limits, and consequences of deviations.\n- Include information on the equipment, such as materials of construction, piping and instrument diagrams, electrical classification, relief and ventilation system design, design codes, material and energy balances, and safety systems.\n- Document compliance with recognized engineering practices and ensure safe operation of equipment designed to outdated standards.",
+    "type_id": 3,
+    "category": 1,
+    "priority": 0,
+    "recurring_frequency_rule": "YEARLY",
+    "recurring_interval_rule": 3,
+    "recurring_count_rule": null,
+    "recurring_start_date_rule": "2029-02-25T00:00:00.000000Z",
+    "recurring_end_date_rule": null,
+    "due_scheduled_at": "2029-02-25T00:00:00.000000Z",
+    "rescheduled_at": null,
+    "internal_code": null,
+    "scope": 1,
+    "state": 2,
+    "perimeter_state": 2,
+    "criticality": 1,
+    "temporal_criticality": "temporalCriticality.onTrack",
+    "created_by": 12,
+    "updated_by": null,
+    "author_name": "Unknown User",
+    "updater_name": null,
+    "created_at": "2026-03-25T17:15:11.000000Z",
+    "updated_at": "2026-06-23T14:04:47.000000Z",
+    "created_from": "systems",
+    "updated_from": null,
+    "attachments": [],
+    "instances": [
+      {
+        "id": 186855,
+        "site": {
+          "id_site": 1617589,
+          "name": "BIS - Bishop",
+          "id_country": 29,
+          "country_name": "United States of America",
+          "is_active": true
+        },
+        "owners": [
+          {
+            "id": 185592,
+            "user_id": 593093,
+            "user_name": "Delfino Salazar Gomez",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "reviewers": [
+          {
+            "id": 183720,
+            "user_id": 594152,
+            "user_name": "Cristiano Oliveira",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "occurrences": [
+          {
+            "id": 186013,
+            "instance_id": 186855,
+            "attachments": [],
+            "due_scheduled_at": "2029-02-25T00:00:00.000000Z",
+            "original_due_scheduled_at": "2029-02-25T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": 12,
+            "updated_by": null
+          },
+          {
+            "id": 724383,
+            "instance_id": 186855,
+            "attachments": [],
+            "due_scheduled_at": "2032-02-25T00:00:00.000000Z",
+            "original_due_scheduled_at": "2032-02-25T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": null,
+            "updated_by": null
+          }
+        ],
+        "temporal_criticality": "temporalCriticality.onTrack",
+        "state": 2,
+        "created_by": 12,
+        "updated_by": null
+      }
+    ],
+    "references": [
+      {
+        "reference_type_id": 2,
+        "references_nb": 1
+      }
+    ],
+    "references_nb": 1
+  },
+  {
+    "id": 186667,
+    "title": "Perform an initial process hazard analysis and update it every five years.",
+    "description": "Perform an initial process hazard analysis and update it every five years.\n\n- Conduct an initial process hazard analysis for each process, considering its complexity and potential hazards.\n- Use appropriate methodologies such as What-If, Checklist, HAZOP, FMEA, Fault Tree Analysis, or equivalent.\n- Ensure the analysis addresses process hazards, previous incidents, controls, facility siting, human factors, and potential safety and health effects.\n- Form a team with expertise in engineering and process operations, including at least one employee with specific process knowledge and one knowledgeable in the analysis methodology.\n- Establish a system to address and document the team's findings and recommendations, and communicate actions to affected employees.\n- Retain all analyses and documented resolutions for the life of the process.",
+    "type_id": 3,
+    "category": 1,
+    "priority": 0,
+    "recurring_frequency_rule": "YEARLY",
+    "recurring_interval_rule": 5,
+    "recurring_count_rule": null,
+    "recurring_start_date_rule": "2031-02-27T00:00:00.000000Z",
+    "recurring_end_date_rule": null,
+    "due_scheduled_at": "2031-02-27T00:00:00.000000Z",
+    "rescheduled_at": null,
+    "internal_code": null,
+    "scope": 1,
+    "state": 2,
+    "perimeter_state": 2,
+    "criticality": 1,
+    "temporal_criticality": "temporalCriticality.onTrack",
+    "created_by": 12,
+    "updated_by": null,
+    "author_name": "Unknown User",
+    "updater_name": null,
+    "created_at": "2026-03-25T17:15:13.000000Z",
+    "updated_at": "2026-06-23T14:04:47.000000Z",
+    "created_from": "systems",
+    "updated_from": null,
+    "attachments": [],
+    "instances": [
+      {
+        "id": 186856,
+        "site": {
+          "id_site": 1617589,
+          "name": "BIS - Bishop",
+          "id_country": 29,
+          "country_name": "United States of America",
+          "is_active": true
+        },
+        "owners": [
+          {
+            "id": 185593,
+            "user_id": 593093,
+            "user_name": "Delfino Salazar Gomez",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "reviewers": [
+          {
+            "id": 183721,
+            "user_id": 594152,
+            "user_name": "Cristiano Oliveira",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "occurrences": [
+          {
+            "id": 186014,
+            "instance_id": 186856,
+            "attachments": [],
+            "due_scheduled_at": "2031-02-27T00:00:00.000000Z",
+            "original_due_scheduled_at": "2031-02-27T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": 12,
+            "updated_by": null
+          },
+          {
+            "id": 724384,
+            "instance_id": 186856,
+            "attachments": [],
+            "due_scheduled_at": "2036-02-27T00:00:00.000000Z",
+            "original_due_scheduled_at": "2036-02-27T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": null,
+            "updated_by": null
+          }
+        ],
+        "temporal_criticality": "temporalCriticality.onTrack",
+        "state": 2,
+        "created_by": 12,
+        "updated_by": null
+      }
+    ],
+    "references": [
+      {
+        "reference_type_id": 2,
+        "references_nb": 1
+      }
+    ],
+    "references_nb": 1
+  },
+  {
+    "id": 186668,
+    "title": "Develop and implement written operating procedures for each covered process.",
+    "description": "Develop and implement written operating procedures for each covered process.\n\n- Develop and implement written operating procedures with clear instructions for safely conducting activities in each covered process.\n- Include steps for each operating phase: initial startup, normal operations, temporary operations, emergency shutdown, emergency operations, normal shutdown, and startup after a turnaround or emergency shutdown.\n- Define operating limits, including consequences of deviation and corrective steps.\n- Address safety and health considerations, including chemical hazards, exposure prevention, control measures, quality control for raw materials, and unique hazards.\n- Ensure safety systems and their functions are included.\n- Make operating procedures readily accessible to employees involved in or maintaining a process.\n- Review and update operating procedures as necessary to reflect current practices and certify annually that they are current and accurate.\n- Develop and implement safe work practices for hazard control during operations, applicable to both employees and contractor employees.",
+    "type_id": 3,
+    "category": 1,
+    "priority": 0,
+    "recurring_frequency_rule": "YEARLY",
+    "recurring_interval_rule": 1,
+    "recurring_count_rule": null,
+    "recurring_start_date_rule": "2026-08-27T00:00:00.000000Z",
+    "recurring_end_date_rule": null,
+    "due_scheduled_at": "2026-08-27T00:00:00.000000Z",
+    "rescheduled_at": null,
+    "internal_code": null,
+    "scope": 1,
+    "state": 2,
+    "perimeter_state": 2,
+    "criticality": 10,
+    "temporal_criticality": "temporalCriticality.overdue",
+    "created_by": 12,
+    "updated_by": null,
+    "author_name": "Unknown User",
+    "updater_name": null,
+    "created_at": "2026-03-25T17:15:15.000000Z",
+    "updated_at": "2026-06-23T14:04:48.000000Z",
+    "created_from": "systems",
+    "updated_from": null,
+    "attachments": [],
+    "instances": [
+      {
+        "id": 186857,
+        "site": {
+          "id_site": 1617589,
+          "name": "BIS - Bishop",
+          "id_country": 29,
+          "country_name": "United States of America",
+          "is_active": true
+        },
+        "owners": [
+          {
+            "id": 185594,
+            "user_id": 593093,
+            "user_name": "Delfino Salazar Gomez",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "reviewers": [
+          {
+            "id": 183722,
+            "user_id": 594152,
+            "user_name": "Cristiano Oliveira",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "occurrences": [
+          {
+            "id": 186015,
+            "instance_id": 186857,
+            "attachments": [],
+            "due_scheduled_at": "2026-08-27T00:00:00.000000Z",
+            "original_due_scheduled_at": "2026-08-27T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.overdue",
+            "created_by": 12,
+            "updated_by": null
+          },
+          {
+            "id": 724385,
+            "instance_id": 186857,
+            "attachments": [],
+            "due_scheduled_at": "2027-08-27T00:00:00.000000Z",
+            "original_due_scheduled_at": "2027-08-27T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": null,
+            "updated_by": null
+          }
+        ],
+        "temporal_criticality": "temporalCriticality.overdue",
+        "state": 2,
+        "created_by": 12,
+        "updated_by": null
+      }
+    ],
+    "references": [
+      {
+        "reference_type_id": 2,
+        "references_nb": 1
+      }
+    ],
+    "references_nb": 1
+  },
+  {
+    "id": 186669,
+    "title": "Train employees involved in operating a process and document the training.",
+    "description": "Train employees involved in operating a process and document the training.\n\n- Train each employee currently involved in operating a process and each employee before starting a new process on the process overview and operating procedures.\n- Emphasize specific safety and health hazards, emergency operations, and safe work practices during training.\n- Certify in writing the knowledge, skills, and abilities of employees already involved in a process as of May 26, 1992, if initial training is not provided.\n- Provide refresher training at least every three years or more frequently if necessary, in consultation with employees.\n- Document that each employee has received and understood the training, including the employee's identity, training date, and verification method.",
+    "type_id": 3,
+    "category": 1,
+    "priority": 0,
+    "recurring_frequency_rule": "YEARLY",
+    "recurring_interval_rule": 3,
+    "recurring_count_rule": null,
+    "recurring_start_date_rule": "2029-02-28T00:00:00.000000Z",
+    "recurring_end_date_rule": null,
+    "due_scheduled_at": "2029-02-28T00:00:00.000000Z",
+    "rescheduled_at": null,
+    "internal_code": null,
+    "scope": 1,
+    "state": 2,
+    "perimeter_state": 2,
+    "criticality": 1,
+    "temporal_criticality": "temporalCriticality.onTrack",
+    "created_by": 12,
+    "updated_by": null,
+    "author_name": "Unknown User",
+    "updater_name": null,
+    "created_at": "2026-03-25T17:15:16.000000Z",
+    "updated_at": "2026-06-23T14:04:48.000000Z",
+    "created_from": "systems",
+    "updated_from": null,
+    "attachments": [],
+    "instances": [
+      {
+        "id": 186858,
+        "site": {
+          "id_site": 1617589,
+          "name": "BIS - Bishop",
+          "id_country": 29,
+          "country_name": "United States of America",
+          "is_active": true
+        },
+        "owners": [
+          {
+            "id": 185595,
+            "user_id": 593093,
+            "user_name": "Delfino Salazar Gomez",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "reviewers": [
+          {
+            "id": 183723,
+            "user_id": 594152,
+            "user_name": "Cristiano Oliveira",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "occurrences": [
+          {
+            "id": 186016,
+            "instance_id": 186858,
+            "attachments": [],
+            "due_scheduled_at": "2029-02-28T00:00:00.000000Z",
+            "original_due_scheduled_at": "2029-02-28T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": 12,
+            "updated_by": null
+          },
+          {
+            "id": 724386,
+            "instance_id": 186858,
+            "attachments": [],
+            "due_scheduled_at": "2032-02-28T00:00:00.000000Z",
+            "original_due_scheduled_at": "2032-02-28T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": null,
+            "updated_by": null
+          }
+        ],
+        "temporal_criticality": "temporalCriticality.onTrack",
+        "state": 2,
+        "created_by": 12,
+        "updated_by": null
+      }
+    ],
+    "references": [
+      {
+        "reference_type_id": 2,
+        "references_nb": 1
+      }
+    ],
+    "references_nb": 1
+  },
+  {
+    "id": 186670,
+    "title": "Perform a pre-startup safety review for new and significantly modified facilities.",
+    "description": "Perform a pre-startup safety review for new and significantly modified facilities.\n\n- Effectuez une revue de s\u00e9curit\u00e9 avant le d\u00e9marrage pour les nouvelles installations et les installations modifi\u00e9es de mani\u00e8re significative.\n- Confirmez que la construction et l'\u00e9quipement sont conformes aux sp\u00e9cifications de conception avant l'introduction de produits chimiques hautement dangereux.\n- Assurez-vous que les proc\u00e9dures de s\u00e9curit\u00e9, d'exploitation, de maintenance et d'urgence sont en place et ad\u00e9quates.\n- R\u00e9alisez une analyse des risques de proc\u00e9d\u00e9 pour les nouvelles installations et r\u00e9solvez ou mettez en \u0153uvre les recommandations avant le d\u00e9marrage.\n- V\u00e9rifiez que les installations modifi\u00e9es r\u00e9pondent aux exigences de gestion du changement.\n- Compl\u00e9tez la formation de chaque employ\u00e9 impliqu\u00e9 dans l'exploitation d'un proc\u00e9d\u00e9.",
+    "type_id": 3,
+    "category": 1,
+    "priority": 0,
+    "recurring_frequency_rule": "YEARLY",
+    "recurring_interval_rule": 3,
+    "recurring_count_rule": null,
+    "recurring_start_date_rule": "2029-02-27T00:00:00.000000Z",
+    "recurring_end_date_rule": null,
+    "due_scheduled_at": "2029-02-27T00:00:00.000000Z",
+    "rescheduled_at": null,
+    "internal_code": null,
+    "scope": 1,
+    "state": 2,
+    "perimeter_state": 2,
+    "criticality": 1,
+    "temporal_criticality": "temporalCriticality.onTrack",
+    "created_by": 12,
+    "updated_by": null,
+    "author_name": "Unknown User",
+    "updater_name": null,
+    "created_at": "2026-03-25T17:15:18.000000Z",
+    "updated_at": "2026-06-23T14:04:48.000000Z",
+    "created_from": "systems",
+    "updated_from": null,
+    "attachments": [],
+    "instances": [
+      {
+        "id": 186859,
+        "site": {
+          "id_site": 1617589,
+          "name": "BIS - Bishop",
+          "id_country": 29,
+          "country_name": "United States of America",
+          "is_active": true
+        },
+        "owners": [
+          {
+            "id": 185596,
+            "user_id": 593093,
+            "user_name": "Delfino Salazar Gomez",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "reviewers": [
+          {
+            "id": 183724,
+            "user_id": 594152,
+            "user_name": "Cristiano Oliveira",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "occurrences": [
+          {
+            "id": 186017,
+            "instance_id": 186859,
+            "attachments": [],
+            "due_scheduled_at": "2029-02-27T00:00:00.000000Z",
+            "original_due_scheduled_at": "2029-02-27T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": 12,
+            "updated_by": null
+          },
+          {
+            "id": 724387,
+            "instance_id": 186859,
+            "attachments": [],
+            "due_scheduled_at": "2032-02-27T00:00:00.000000Z",
+            "original_due_scheduled_at": "2032-02-27T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": null,
+            "updated_by": null
+          }
+        ],
+        "temporal_criticality": "temporalCriticality.onTrack",
+        "state": 2,
+        "created_by": 12,
+        "updated_by": null
+      }
+    ],
+    "references": [
+      {
+        "reference_type_id": 2,
+        "references_nb": 1
+      }
+    ],
+    "references_nb": 1
+  },
+  {
+    "id": 186671,
+    "title": "Establish and implement written procedures to maintain the ongoing integrity of process equipment.",
+    "description": "Establish and implement written procedures to maintain the ongoing integrity of process equipment.\n\n- Establish and implement written procedures to maintain the ongoing integrity of process equipment.\n- Train employees involved in maintenance on process overview, hazards, and job-specific procedures to ensure safe task performance.\n- Perform inspections and tests on process equipment following recognized good engineering practices and document each inspection and test.\n- Correct equipment deficiencies outside acceptable limits before further use or in a safe and timely manner.\n- Ensure new equipment is suitable for its intended process application and perform checks to confirm proper installation.\n- Ensure maintenance materials, spare parts, and equipment are suitable for their intended process application.",
+    "type_id": 3,
+    "category": 1,
+    "priority": 0,
+    "recurring_frequency_rule": "YEARLY",
+    "recurring_interval_rule": 3,
+    "recurring_count_rule": null,
+    "recurring_start_date_rule": "2029-03-02T00:00:00.000000Z",
+    "recurring_end_date_rule": null,
+    "due_scheduled_at": "2029-03-02T00:00:00.000000Z",
+    "rescheduled_at": null,
+    "internal_code": null,
+    "scope": 1,
+    "state": 2,
+    "perimeter_state": 2,
+    "criticality": 1,
+    "temporal_criticality": "temporalCriticality.onTrack",
+    "created_by": 12,
+    "updated_by": null,
+    "author_name": "Unknown User",
+    "updater_name": null,
+    "created_at": "2026-03-25T17:15:20.000000Z",
+    "updated_at": "2026-06-23T14:04:48.000000Z",
+    "created_from": "systems",
+    "updated_from": null,
+    "attachments": [],
+    "instances": [
+      {
+        "id": 186860,
+        "site": {
+          "id_site": 1617589,
+          "name": "BIS - Bishop",
+          "id_country": 29,
+          "country_name": "United States of America",
+          "is_active": true
+        },
+        "owners": [
+          {
+            "id": 185597,
+            "user_id": 593093,
+            "user_name": "Delfino Salazar Gomez",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "reviewers": [
+          {
+            "id": 183725,
+            "user_id": 594152,
+            "user_name": "Cristiano Oliveira",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "occurrences": [
+          {
+            "id": 186018,
+            "instance_id": 186860,
+            "attachments": [],
+            "due_scheduled_at": "2029-03-02T00:00:00.000000Z",
+            "original_due_scheduled_at": "2029-03-02T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": 12,
+            "updated_by": null
+          },
+          {
+            "id": 724388,
+            "instance_id": 186860,
+            "attachments": [],
+            "due_scheduled_at": "2032-03-02T00:00:00.000000Z",
+            "original_due_scheduled_at": "2032-03-02T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": null,
+            "updated_by": null
+          }
+        ],
+        "temporal_criticality": "temporalCriticality.onTrack",
+        "state": 2,
+        "created_by": 12,
+        "updated_by": null
+      }
+    ],
+    "references": [
+      {
+        "reference_type_id": 2,
+        "references_nb": 1
+      }
+    ],
+    "references_nb": 1
+  },
+  {
+    "id": 186672,
+    "title": "Establish and implement written procedures to manage changes to process chemicals, technology, equipment, procedures, and facilities affecting a covered process.",
+    "description": "Establish and implement written procedures to manage changes to process chemicals, technology, equipment, procedures, and facilities affecting a covered process.\n\n- Establish and implement written procedures for managing changes to process chemicals, technology, equipment, procedures, and facilities.\n- Ensure the procedures address the technical basis, safety and health impact, modifications to operating procedures, necessary time period, and authorization requirements before any change.\n- Inform and train employees involved in operating, maintenance, and contract employees affected by the change before process start-up.\n- Update process safety information if changes affect it.\n- Update operating procedures or practices if changes affect them.",
+    "type_id": 3,
+    "category": 1,
+    "priority": 0,
+    "recurring_frequency_rule": "YEARLY",
+    "recurring_interval_rule": 3,
+    "recurring_count_rule": null,
+    "recurring_start_date_rule": "2029-02-27T00:00:00.000000Z",
+    "recurring_end_date_rule": null,
+    "due_scheduled_at": "2029-02-27T00:00:00.000000Z",
+    "rescheduled_at": null,
+    "internal_code": null,
+    "scope": 1,
+    "state": 2,
+    "perimeter_state": 2,
+    "criticality": 1,
+    "temporal_criticality": "temporalCriticality.onTrack",
+    "created_by": 12,
+    "updated_by": null,
+    "author_name": "Unknown User",
+    "updater_name": null,
+    "created_at": "2026-03-25T17:15:22.000000Z",
+    "updated_at": "2026-06-23T14:04:49.000000Z",
+    "created_from": "systems",
+    "updated_from": null,
+    "attachments": [],
+    "instances": [
+      {
+        "id": 186861,
+        "site": {
+          "id_site": 1617589,
+          "name": "BIS - Bishop",
+          "id_country": 29,
+          "country_name": "United States of America",
+          "is_active": true
+        },
+        "owners": [
+          {
+            "id": 185598,
+            "user_id": 593093,
+            "user_name": "Delfino Salazar Gomez",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "reviewers": [
+          {
+            "id": 183726,
+            "user_id": 594152,
+            "user_name": "Cristiano Oliveira",
+            "is_active": true,
+            "can_access": true
+          }
+        ],
+        "occurrences": [
+          {
+            "id": 186019,
+            "instance_id": 186861,
+            "attachments": [],
+            "due_scheduled_at": "2029-02-27T00:00:00.000000Z",
+            "original_due_scheduled_at": "2029-02-27T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": 12,
+            "updated_by": null
+          },
+          {
+            "id": 724389,
+            "instance_id": 186861,
+            "attachments": [],
+            "due_scheduled_at": "2032-02-27T00:00:00.000000Z",
+            "original_due_scheduled_at": "2032-02-27T00:00:00.000000Z",
+            "completed_at": null,
+            "feedbacks": [],
+            "status_id": 1,
+            "temporal_criticality": "temporalCriticality.onTrack",
+            "created_by": null,
+            "updated_by": null
+          }
+        ],
+        "temporal_criticality": "temporalCriticality.onTrack",
+        "state": 2,
+        "created_by": 12,
+        "updated_by": null
+      }
+    ],
+    "references": [
+      {
+        "reference_type_id": 2,
+        "references_nb": 1
+      }
+    ],
+    "references_nb": 1
+  }
+]

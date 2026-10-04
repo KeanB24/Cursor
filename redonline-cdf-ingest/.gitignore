@@ -2,7 +2,6 @@
 .venv/
 venv/
 # Live ROL/HSE API captures may contain PII — keep local only
-samples/rol/
 __pycache__/
 *.py[cod]
 *.egg-info/
