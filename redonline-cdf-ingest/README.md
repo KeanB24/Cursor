@@ -40,14 +40,19 @@ cd redonline-cdf-ingest
 copy .env.example .env
 ```
 
+You must be inside the `redonline-cdf-ingest` folder (where `requirements.txt` lives).
+
 Edit `.env` and set real Cognite OIDC values (`CDF_CLIENT_ID`, `CDF_CLIENT_SECRET`, `CDF_TENANT_ID`).
 The HSE API key and base URL are already filled from the ct-test details.
+
+If you skip `.env`, the client can still use `auth.api_key` from `config/endpoints.yaml`.
 
 ### 2. Install packages (once, no virtualenv)
 
 Use your normal Python (e.g. Anaconda or system Python). No `.venv` needed.
 
 ```powershell
+cd redonline-cdf-ingest
 python -m pip install -r requirements.txt
 python -m pip install -e .
 ```

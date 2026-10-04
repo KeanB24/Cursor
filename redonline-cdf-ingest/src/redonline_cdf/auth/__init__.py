@@ -48,21 +48,34 @@ def resolve_redonline_token() -> str:
     """
     Return a Red Online / HSE API credential.
 
-    Prefer REDONLINE_API_KEY (X-ROL-API-KEY) or REDONLINE_TOKEN.
-    If unset and OAuth env vars are present, fetch a token.
+    Order:
+    1. REDONLINE_API_KEY or REDONLINE_TOKEN env
+    2. auth.api_key in config/endpoints.yaml
+    3. OAuth client-credentials (REDONLINE_TOKEN_URL + client id/secret)
     """
     for name in ("REDONLINE_API_KEY", "REDONLINE_TOKEN"):
         static = os.getenv(name)
         if static:
             return static
 
+    try:
+        from redonline_cdf.config import load_endpoints
+
+        api_key = (load_endpoints().get("auth") or {}).get("api_key")
+        if api_key:
+            return str(api_key)
+    except Exception:  # noqa: BLE001 — fall through to OAuth / error
+        pass
+
     token_url = os.getenv("REDONLINE_TOKEN_URL")
     client_id = os.getenv("REDONLINE_CLIENT_ID")
     client_secret = os.getenv("REDONLINE_CLIENT_SECRET")
     if not (token_url and client_id and client_secret):
         raise RuntimeError(
-            "Set REDONLINE_API_KEY (or REDONLINE_TOKEN), or OAuth via "
-            "REDONLINE_TOKEN_URL + REDONLINE_CLIENT_ID + REDONLINE_CLIENT_SECRET"
+            "Set REDONLINE_API_KEY (or REDONLINE_TOKEN) in .env, "
+            "or auth.api_key in config/endpoints.yaml, "
+            "or OAuth via REDONLINE_TOKEN_URL + "
+            "REDONLINE_CLIENT_ID + REDONLINE_CLIENT_SECRET"
         )
 
     data = {
