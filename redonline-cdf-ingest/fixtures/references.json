@@ -1,16 +1,115 @@
-[
-  {
-    "id": "REF-1",
-    "label": "Priority High",
-    "code": "HIGH",
-    "userId": "584646",
-    "updatedAt": "2026-03-15T10:00:00Z"
-  },
-  {
-    "id": "REF-2",
-    "label": "Status Open",
-    "code": "OPEN",
-    "userId": "584646",
-    "updatedAt": "2026-03-16T10:00:00Z"
+{
+  "success": true,
+  "message": "Ok",
+  "data": {
+    "categories": [
+      {
+        "label": "categories.non_applicable",
+        "value": 1
+      },
+      {
+        "label": "categories.corrective",
+        "value": 2
+      },
+      {
+        "label": "categories.preventive",
+        "value": 3
+      }
+    ],
+    "priorities": [
+      {
+        "label": "priorities.none",
+        "value": 0
+      },
+      {
+        "label": "priorities.low",
+        "value": 1
+      },
+      {
+        "label": "priorities.medium",
+        "value": 5
+      },
+      {
+        "label": "priorities.high",
+        "value": 10
+      }
+    ],
+    "states": [
+      {
+        "label": "states.opened",
+        "value": 2
+      },
+      {
+        "label": "states.done",
+        "value": 6
+      },
+      {
+        "label": "states.abandoned",
+        "value": 8
+      }
+    ],
+    "occurrence_statuses": [
+      {
+        "label": "occurrence_statuses.new",
+        "next_status_ids": [
+          2,
+          7,
+          8
+        ],
+        "value": 1
+      },
+      {
+        "label": "occurrence_statuses.on_going",
+        "next_status_ids": [
+          3,
+          7,
+          8
+        ],
+        "value": 2
+      },
+      {
+        "label": "occurrence_statuses.to_review",
+        "next_status_ids": [
+          4,
+          5,
+          7,
+          8
+        ],
+        "value": 3
+      },
+      {
+        "label": "occurrence_statuses.efficiency_check",
+        "next_status_ids": [
+          5,
+          7,
+          8
+        ],
+        "value": 4
+      },
+      {
+        "label": "occurrence_statuses.rejected",
+        "next_status_ids": [
+          2,
+          7,
+          8
+        ],
+        "value": 5
+      },
+      {
+        "label": "occurrence_statuses.closed",
+        "next_status_ids": [],
+        "value": 6
+      },
+      {
+        "label": "occurrence_statuses.paused",
+        "next_status_ids": [],
+        "value": 7
+      },
+      {
+        "label": "occurrence_statuses.abandoned",
+        "next_status_ids": [],
+        "value": 8
+      }
+    ]
   }
-]
+}

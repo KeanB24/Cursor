@@ -123,13 +123,25 @@ python scripts/run_local.py --dry-run
 
 Calls the real HSE APIs with `X-ROL-API-KEY` and prints what would be staged/loaded.
 
-### 6. Full ingest into Cognite
+### 6. Full RAW ingest into Cognite (`ROL-COR`)
+
+First wave writes to RAW database **`ROL-COR`** only (`load_to_data_model: false`).
+
+**Cascaded walk:** sites → users for each site → tasks for each user → references once.
+
+Tables: `Sites`, `Users`, `User_profiles`, `Tasks`, `Task_instances`,
+`Task_occurrences`, `Ref_categories`, `Ref_priorities`, `Ref_states`,
+`Ref_occurrence_statuses`, `Ingestion_state`.
+
+Optional volume limits in `config/settings.yaml` under `cascaded.max_*`.
 
 ```powershell
 python scripts/run_local.py
 ```
 
-Pulls HSE → stages RAW → upserts into the Action Item Management views.
+Requires working CDF credentials in `.env` and network access to both HSE and CDF.
+
+Handoff for a new chat/agent: see [`AGENT_HANDOFF.md`](AGENT_HANDOFF.md).
 
 ### 7. Optional: single entity
 

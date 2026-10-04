@@ -32,7 +32,7 @@ def endpoints_config() -> dict:
                 "method": "GET",
                 "path": "/v2/secure-clients/legapi-general/sites",
                 "query": {},
-                "items_path": None,
+                "items_path": "sites",
                 "pagination": {"type": "none"},
                 "fixture": "sites.json",
             },
@@ -41,7 +41,7 @@ def endpoints_config() -> dict:
                 "path": "/v2/secure-clients/legapi-general/users/sites/{site_id}",
                 "path_params": {"site_id": "{site_id}"},
                 "query": {},
-                "items_path": None,
+                "items_path": "users",
                 "pagination": {"type": "none"},
                 "fixture": "users.json",
             },
@@ -49,7 +49,7 @@ def endpoints_config() -> dict:
                 "method": "GET",
                 "path": "/v2/secure-clients/tasks",
                 "query": {"user_id": "{user_id}"},
-                "items_path": None,
+                "items_path": "data",
                 "pagination": {"type": "none"},
                 "fixture": "tasks.json",
             },
@@ -65,7 +65,7 @@ def test_mock_fetch_sites(endpoints_config: dict) -> None:
     )
     items = client.fetch_all("list_sites")
     assert len(items) == 2
-    assert items[0]["id"] == "112087"
+    assert items[0]["id_site"] == 112084
     client.close()
 
 
@@ -75,7 +75,7 @@ def test_http_fetch_with_api_key_header(endpoints_config: dict) -> None:
         assert "/users/sites/112087" in str(request.url)
         return httpx.Response(
             200,
-            json=[{"id": "U1", "name": "From API"}],
+            json={"users": [{"id_user": 1, "email": "a@b.com"}]},
         )
 
     transport = httpx.MockTransport(handler)
@@ -88,15 +88,15 @@ def test_http_fetch_with_api_key_header(endpoints_config: dict) -> None:
         http_client=http,
     )
     items = client.fetch_all("list_users_by_site")
-    assert items == [{"id": "U1", "name": "From API"}]
+    assert items == [{"id_user": 1, "email": "a@b.com"}]
     client.close()
 
 
 def test_tasks_query_user_id(endpoints_config: dict) -> None:
     def handler(request: httpx.Request) -> httpx.Response:
-        assert request.url.params.get("user_id") == "584646"
+        assert request.url.params.get("user_id") == "999"
         assert request.headers.get("X-ROL-API-KEY") == "test-api-key"
-        return httpx.Response(200, json=[{"id": "T1"}])
+        return httpx.Response(200, json={"data": [{"id": 10, "title": "T"}]})
 
     transport = httpx.MockTransport(handler)
     http = httpx.Client(transport=transport)
@@ -107,6 +107,9 @@ def test_tasks_query_user_id(endpoints_config: dict) -> None:
         mock=False,
         http_client=http,
     )
-    items = client.fetch_all("list_tasks_by_user")
-    assert items == [{"id": "T1"}]
+    items = client.fetch_all(
+        "list_tasks_by_user",
+        path_vars={"user_id": "999"},
+    )
+    assert items == [{"id": 10, "title": "T"}]
     client.close()

@@ -168,11 +168,15 @@ class RedOnlineClient:
         with path.open(encoding="utf-8") as fh:
             return json.load(fh)
 
-    def _resolve_path(self, endpoint: dict[str, Any]) -> str:
+    def _resolve_path(
+        self,
+        endpoint: dict[str, Any],
+        path_vars: dict[str, str] | None = None,
+    ) -> str:
         path = str(endpoint.get("path", "/"))
-        extra: dict[str, str] = {}
+        extra: dict[str, str] = dict(path_vars or {})
         for key, value in (endpoint.get("path_params") or {}).items():
-            extra[str(key)] = self._render(str(value))
+            extra[str(key)] = self._render(str(value), path_vars)
         return self._render(path, extra)
 
     def _build_query(
@@ -182,11 +186,12 @@ class RedOnlineClient:
         since: str | None,
         page_token: str | None,
         offset: int | None,
+        path_vars: dict[str, str] | None = None,
     ) -> dict[str, Any]:
         query: dict[str, Any] = {}
         for key, value in (endpoint.get("query") or {}).items():
             if isinstance(value, str):
-                query[key] = self._render(value)
+                query[key] = self._render(value, path_vars)
             else:
                 query[key] = value
 
@@ -211,6 +216,7 @@ class RedOnlineClient:
         since: str | None = None,
         page_token: str | None = None,
         offset: int | None = None,
+        path_vars: dict[str, str] | None = None,
     ) -> Any:
         if self.mock:
             return self._load_fixture(endpoint)
@@ -219,11 +225,15 @@ class RedOnlineClient:
             raise RuntimeError("REDONLINE_BASE_URL is required when not in mock mode")
 
         method = str(endpoint.get("method", "GET")).upper()
-        path = self._resolve_path(endpoint)
+        path = self._resolve_path(endpoint, path_vars)
         url = f"{self.base_url}{path}"
         headers, auth_params = self._auth_headers_and_params()
         query = self._build_query(
-            endpoint, since=since, page_token=page_token, offset=offset
+            endpoint,
+            since=since,
+            page_token=page_token,
+            offset=offset,
+            path_vars=path_vars,
         )
         query.update(auth_params)
 
@@ -237,15 +247,17 @@ class RedOnlineClient:
         endpoint_name: str,
         *,
         since: str | None = None,
+        path_vars: dict[str, str] | None = None,
     ) -> list[dict[str, Any]]:
         """Fetch all pages for a named endpoint and return item dicts."""
-        return list(self.iter_items(endpoint_name, since=since))
+        return list(self.iter_items(endpoint_name, since=since, path_vars=path_vars))
 
     def iter_items(
         self,
         endpoint_name: str,
         *,
         since: str | None = None,
+        path_vars: dict[str, str] | None = None,
     ) -> Iterator[dict[str, Any]]:
         endpoint = self._endpoint(endpoint_name)
         pagination = endpoint.get("pagination") or {}
@@ -262,6 +274,7 @@ class RedOnlineClient:
                 since=since,
                 page_token=page_token,
                 offset=offset if ptype == "offset" else None,
+                path_vars=path_vars,
             )
             items = _as_item_list(payload, items_path)
 

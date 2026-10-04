@@ -45,7 +45,7 @@ def main(argv: list[str] | None = None) -> int:
         "--entities",
         nargs="*",
         default=None,
-        help="Optional subset of entity names (actions tasks categories)",
+        help="Optional subset of entity names (sites users tasks references)",
     )
     parser.add_argument(
         "--log-level",

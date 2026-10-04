@@ -1,31 +1,30 @@
-# Map HSE / RAW columns → Cognite Data Model view properties.
-# Placeholder field names until discover_rol_schema.py + live CDF views confirm them.
-# After discovery: align keys with samples/rol/schema_summary.md and view properties.
+# Map staged RAW columns → Cognite DM view properties (used when load_to_data_model: true).
+# First wave stages RAW only; keep these aligned for a later DM load.
 
 site:
-  externalId: id
+  externalId: id_site
   properties:
     name: name
-    code: code
-    updatedAt: updatedAt
+    idParent: id_parent
+    idSiteType: id_site_type
+    idCountry: id_country
+    idRefStatus: id_ref_status
+    codeIso: code_iso
+    countryName: country_name
     sourceSystem: _source_system
 
 user:
-  externalId: id
+  externalId: id_user
   properties:
-    name: name
+    firstName: firstname
+    lastName: lastname
+    userName: user_name
     email: email
-    siteId: siteId
-    updatedAt: updatedAt
-    sourceSystem: _source_system
-
-reference:
-  externalId: id
-  properties:
-    label: label
-    code: code
-    userId: userId
-    updatedAt: updatedAt
+    language: language
+    locale: locale
+    idSite: id_site
+    idClient: id_client
+    idRefStatus: id_ref_status
     sourceSystem: _source_system
 
 task:
@@ -33,13 +32,17 @@ task:
   properties:
     title: title
     description: description
-    status: status
-    userId: userId
-    dueDate: dueDate
-    updatedAt: updatedAt
-    createdAt: createdAt
+    typeId: type_id
+    category: category
+    priority: priority
+    state: state
+    scope: scope
+    criticality: criticality
+    temporalCriticality: temporal_criticality
+    dueScheduledAt: due_scheduled_at
+    createdAt: created_at
+    updatedAt: updated_at
     sourceSystem: _source_system
 
-# Constants injected into every staged / mapped row
 constants:
-  _source_system: RedOnline
+  _source_system: ROL

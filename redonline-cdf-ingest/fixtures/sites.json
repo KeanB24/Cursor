@@ -1,14 +1,24 @@
-[
-  {
-    "id": "112087",
-    "name": "Example Site",
-    "code": "SITE-112087",
-    "updatedAt": "2026-03-18T10:00:00Z"
-  },
-  {
-    "id": "112088",
-    "name": "Second Site",
-    "code": "SITE-112088",
-    "updatedAt": "2026-03-19T10:00:00Z"
-  }
-]
+{
+  "sites": [
+    {
+      "id_site": 112084,
+      "id_parent": null,
+      "name": "Celanese",
+      "id_site_type": 1,
+      "id_country": null,
+      "id_ref_status": 1,
+      "code_iso": "",
+      "country_name": ""
+    },
+    {
+      "id_site": 112087,
+      "id_parent": 1579560,
+      "name": "GEL - Geleen, Netherlands",
+      "id_site_type": 6,
+      "id_country": 47,
+      "id_ref_status": 1,
+      "code_iso": "NL",
+      "country_name": "Netherlands"
+    }
+  ]
+}

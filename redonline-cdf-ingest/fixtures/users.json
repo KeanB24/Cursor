@@ -1,16 +1,44 @@
-[
-  {
-    "id": "584646",
-    "name": "Example User",
-    "email": "user@example.com",
-    "siteId": "112087",
-    "updatedAt": "2026-03-18T11:00:00Z"
-  },
-  {
-    "id": "156028",
-    "name": "Second User",
-    "email": "user2@example.com",
-    "siteId": "112087",
-    "updatedAt": "2026-03-18T12:00:00Z"
-  }
-]
+{
+  "users": [
+    {
+      "id_user": 156028,
+      "firstname": "Monika",
+      "lastname": "Hess",
+      "user_name": "Monika Hess",
+      "email": "monika.hess@celanese.com",
+      "id_langue": 2,
+      "language": "en",
+      "locale": "en_US.UTF8",
+      "id_ref_status": 6,
+      "id_client": 4243,
+      "profiles": [
+        {
+          "id_profile": 5,
+          "name": "ROL_Model_Profile_5"
+        }
+      ]
+    },
+    {
+      "id_user": 506569,
+      "firstname": "Raoul",
+      "lastname": "Asnong",
+      "user_name": "Raoul Asnong",
+      "email": "raoul.asnong@celanese.com",
+      "id_langue": 22,
+      "language": "en",
+      "locale": "en_GB.UTF8",
+      "id_ref_status": 1,
+      "id_client": 4243,
+      "profiles": [
+        {
+          "id_profile": 5,
+          "name": "ROL_Model_Profile_5"
+        },
+        {
+          "id_profile": 29,
+          "name": "ROL_Model_Profile_29"
+        }
+      ]
+    }
+  ]
+}

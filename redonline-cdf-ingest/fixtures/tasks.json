@@ -1,22 +1,188 @@
-[
-  {
-    "id": "TASK-2001",
-    "title": "Collect witness statements",
-    "description": "Interview operators on shift",
-    "status": "Open",
-    "userId": "584646",
-    "dueDate": "2026-03-20",
-    "updatedAt": "2026-03-15T11:00:00Z",
-    "createdAt": "2026-03-15T10:05:00Z"
-  },
-  {
-    "id": "TASK-2002",
-    "title": "Draft SOP revision",
-    "description": "First draft for peer review",
-    "status": "InProgress",
-    "userId": "584646",
-    "dueDate": "2026-04-01",
-    "updatedAt": "2026-03-18T15:00:00Z",
-    "createdAt": "2026-03-12T09:30:00Z"
-  }
-]
+{
+  "success": true,
+  "message": "Ok",
+  "data": [
+    {
+      "id": 186663,
+      "title": "Ensure compliance with ADR requirements for consignments of dangerous goods.",
+      "description": "Ensure compliance with ADR requirements for consignments of dangerous goods.\n\n- Ascertain that dangerous goods are classified and authorized for carriage according to ADR.\n- Provide the carrier with necessary information, data, and transport documents in a traceable form.\n- Use approved and suitable packagings, large packagings, IBCs, and tanks marked as per ADR.\n- Adhere to dispatch and forwarding restrictions.\n- Ensure empty uncleaned tanks and vehicles are placarded, marked, labelled, closed, and leakproof as if full.\n- For tank-containers and portable tanks with refrigerated liquefied gases, determine the actual holding time or reduce pressure for empty, uncleaned tanks.\n\nComment on frequency:\nReview of current DGSA legal requirements\nReview of any applicable Celanese Tier Two requirements\nReview of any applicable Spondon Tier Three requirements\n\nComment about previous check:\nCheck on the closure progress of the outstanding actions raised in the DGSA audit",
+      "type_id": 3,
+      "category": 1,
+      "priority": 0,
+      "recurring_frequency_rule": "YEARLY",
+      "recurring_interval_rule": 5,
+      "recurring_count_rule": null,
+      "recurring_start_date_rule": "2030-07-16T00:00:00.000000Z",
+      "recurring_end_date_rule": null,
+      "due_scheduled_at": "2030-07-16T00:00:00.000000Z",
+      "rescheduled_at": null,
+      "internal_code": null,
+      "scope": 1,
+      "state": 2,
+      "perimeter_state": 2,
+      "criticality": 1,
+      "temporal_criticality": "temporalCriticality.onTrack",
+      "created_by": 12,
+      "updated_by": null,
+      "author_name": "Unknown User",
+      "updater_name": null,
+      "created_at": "2026-03-25T17:15:05.000000Z",
+      "updated_at": "2026-06-23T14:04:46.000000Z",
+      "created_from": "systems",
+      "updated_from": null,
+      "attachments": [],
+      "instances": [
+        {
+          "id": 186852,
+          "site": {
+            "id_site": 1617578,
+            "name": "SPO - Spondon",
+            "id_country": 8,
+            "country_name": "United Kingdom",
+            "is_active": true
+          },
+          "owners": [
+            {
+              "id": 185589,
+              "user_id": 582639,
+              "user_name": "Matt Cadogan",
+              "is_active": true,
+              "can_access": true
+            }
+          ],
+          "reviewers": [],
+          "occurrences": [
+            {
+              "id": 186010,
+              "instance_id": 186852,
+              "attachments": [],
+              "due_scheduled_at": "2030-07-16T00:00:00.000000Z",
+              "original_due_scheduled_at": "2030-07-16T00:00:00.000000Z",
+              "completed_at": null,
+              "feedbacks": [],
+              "status_id": 1,
+              "temporal_criticality": "temporalCriticality.onTrack",
+              "created_by": 12,
+              "updated_by": null
+            },
+            {
+              "id": 724380,
+              "instance_id": 186852,
+              "attachments": [],
+              "due_scheduled_at": "2035-07-16T00:00:00.000000Z",
+              "original_due_scheduled_at": "2035-07-16T00:00:00.000000Z",
+              "completed_at": null,
+              "feedbacks": [],
+              "status_id": 1,
+              "temporal_criticality": "temporalCriticality.onTrack",
+              "created_by": null,
+              "updated_by": null
+            }
+          ],
+          "temporal_criticality": "temporalCriticality.onTrack",
+          "state": 2,
+          "created_by": 12,
+          "updated_by": null
+        }
+      ],
+      "references": [
+        {
+          "reference_type_id": 2,
+          "references_nb": 1
+        }
+      ],
+      "references_nb": 1
+    },
+    {
+      "id": 186664,
+      "title": "Notify the scheme administrator of your compliance.",
+      "description": "Notify the scheme administrator of your compliance.\n\n- Notify the scheme administrator of your compliance to avoid penalties.\n- Be aware that failure to notify can result in financial penalties and a publication penalty.\n\nComment on frequency:\nTest - To be updated\n\nComment about previous check:\nTest - To be updated",
+      "type_id": 3,
+      "category": 1,
+      "priority": 0,
+      "recurring_frequency_rule": "YEARLY",
+      "recurring_interval_rule": 2,
+      "recurring_count_rule": null,
+      "recurring_start_date_rule": "2027-07-09T00:00:00.000000Z",
+      "recurring_end_date_rule": null,
+      "due_scheduled_at": "2027-07-09T00:00:00.000000Z",
+      "rescheduled_at": null,
+      "internal_code": null,
+      "scope": 1,
+      "state": 2,
+      "perimeter_state": 2,
+      "criticality": 1,
+      "temporal_criticality": "temporalCriticality.onTrack",
+      "created_by": 12,
+      "updated_by": null,
+      "author_name": "Unknown User",
+      "updater_name": null,
+      "created_at": "2026-03-25T17:15:07.000000Z",
+      "updated_at": "2026-06-23T14:04:47.000000Z",
+      "created_from": "systems",
+      "updated_from": null,
+      "attachments": [],
+      "instances": [
+        {
+          "id": 186853,
+          "site": {
+            "id_site": 1617578,
+            "name": "SPO - Spondon",
+            "id_country": 8,
+            "country_name": "United Kingdom",
+            "is_active": true
+          },
+          "owners": [
+            {
+              "id": 185590,
+              "user_id": 582639,
+              "user_name": "Matt Cadogan",
+              "is_active": true,
+              "can_access": true
+            }
+          ],
+          "reviewers": [],
+          "occurrences": [
+            {
+              "id": 186011,
+              "instance_id": 186853,
+              "attachments": [],
+              "due_scheduled_at": "2027-07-09T00:00:00.000000Z",
+              "original_due_scheduled_at": "2027-07-09T00:00:00.000000Z",
+              "completed_at": null,
+              "feedbacks": [],
+              "status_id": 1,
+              "temporal_criticality": "temporalCriticality.onTrack",
+              "created_by": 12,
+              "updated_by": null
+            },
+            {
+              "id": 724381,
+              "instance_id": 186853,
+              "attachments": [],
+              "due_scheduled_at": "2029-07-09T00:00:00.000000Z",
+              "original_due_scheduled_at": "2029-07-09T00:00:00.000000Z",
+              "completed_at": null,
+              "feedbacks": [],
+              "status_id": 1,
+              "temporal_criticality": "temporalCriticality.onTrack",
+              "created_by": null,
+              "updated_by": null
+            }
+          ],
+          "temporal_criticality": "temporalCriticality.onTrack",
+          "state": 2,
+          "created_by": 12,
+          "updated_by": null
+        }
+      ],
+      "references": [
+        {
+          "reference_type_id": 2,
+          "references_nb": 1
+        }
+      ],
+      "references_nb": 1
+    }
+  ]
+}

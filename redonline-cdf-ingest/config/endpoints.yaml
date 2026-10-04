@@ -1,20 +1,16 @@
 # HSE Compliance (Red Online) REST endpoint catalog
-# Source: hse_compliance_api_endpoints.md
+# Source: hse_compliance_api_endpoints.md + samples/rol discovery
 
-# Prefer REDONLINE_BASE_URL env; this is the fallback for ct-test
 base_url: https://apigw.ct-test.hse-compliance.net
 
 auth:
-  # API key sent as custom header X-ROL-API-KEY (not Bearer)
   style: header
   header_name: X-ROL-API-KEY
-  # Prefer REDONLINE_API_KEY from .env; fallback below for ct-test
   api_key: "9f5ef52b-b98d-4cdb-9672-e423cc9051d5"
 
 defaults:
   timeout_seconds: 60
   page_size: 100
-  # From API doc examples — override via REDONLINE_SITE_ID / REDONLINE_USER_ID
   site_id: "112087"
   user_id: "584646"
 
@@ -23,8 +19,7 @@ endpoints:
     method: GET
     path: /v2/secure-clients/legapi-general/sites
     query: {}
-    # Adjust after discover_rol_schema.py if response is wrapped
-    items_path: null
+    items_path: sites
     pagination:
       type: none
     fixture: sites.json
@@ -35,7 +30,7 @@ endpoints:
     path_params:
       site_id: "{site_id}"
     query: {}
-    items_path: null
+    items_path: users
     pagination:
       type: none
     fixture: users.json
@@ -45,6 +40,7 @@ endpoints:
     path: /v2/secure-clients/tasks/configs/references
     query:
       user_id: "{user_id}"
+    # Whole response object; transform splits data.* into Ref_* tables
     items_path: null
     pagination:
       type: none
@@ -55,7 +51,7 @@ endpoints:
     path: /v2/secure-clients/tasks
     query:
       user_id: "{user_id}"
-    items_path: null
+    items_path: data
     pagination:
       type: none
     fixture: tasks.json

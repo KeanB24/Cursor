@@ -78,11 +78,13 @@ class RawStaging:
             buffer = []
 
         for record in rows:
-            key = record.get(id_field)
+            key = record.get("_raw_key", record.get(id_field))
             if key is None:
-                logger.warning("Skipping row without %s in table %s", id_field, table)
+                logger.warning(
+                    "Skipping row without _raw_key/%s in table %s", id_field, table
+                )
                 continue
-            columns = dict(record)
+            columns = {k: v for k, v in record.items() if k != "_raw_key"}
             if extra_columns:
                 columns.update(extra_columns)
             buffer.append(
