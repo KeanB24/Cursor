@@ -60,7 +60,7 @@ class RedOnlineClient:
         http_client: httpx.Client | None = None,
     ) -> None:
         self._config = endpoints_config or load_endpoints()
-        self.base_url = (base_url or os.getenv("REDONLINE_BASE_URL", "")).rstrip("/")
+        self.base_url = self._resolve_base_url(base_url)
         self.token = token if token is not None else self._resolve_api_key()
         self.mock = (
             mock
@@ -70,6 +70,17 @@ class RedOnlineClient:
         self.fixtures_dir = fixtures_dir or (project_root() / "fixtures")
         self._owns_http = http_client is None
         self._http = http_client or httpx.Client(timeout=self._timeout())
+
+    def _resolve_base_url(self, base_url: str | None) -> str:
+        if base_url:
+            return base_url.rstrip("/")
+        env = os.getenv("REDONLINE_BASE_URL")
+        if env:
+            return env.rstrip("/")
+        cfg_url = self._config.get("base_url")
+        if cfg_url:
+            return str(cfg_url).rstrip("/")
+        return ""
 
     def _resolve_api_key(self) -> str | None:
         for name in ("REDONLINE_API_KEY", "REDONLINE_TOKEN"):

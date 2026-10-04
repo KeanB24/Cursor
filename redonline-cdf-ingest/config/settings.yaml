@@ -1,5 +1,11 @@
 # Pipeline settings — HSE Compliance → Cognite Action Item Management
 
+cognite:
+  project: celanese-dev
+  cluster: az-eastus-1
+  base_url: https://az-eastus-1.cognitedata.com
+  # OIDC values live in .env (CDF_CLIENT_ID / SECRET / TENANT_ID)
+
 raw:
   database: redonline_staging
   tables:
@@ -10,8 +16,7 @@ raw:
     ingestion_state: ingestion_state
 
 data_model:
-  # Existing Action Item Management solution space / views in CDF
-  # Update external_id / version to match the live model
+  # Existing Action Item Management solution — confirm live space/view IDs in CDF
   instance_space: ac_action_item_management
   views:
     site:

@@ -151,6 +151,7 @@ def main(argv: list[str] | None = None) -> int:
     summary: dict[str, Any] = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "base_url": os.getenv("REDONLINE_BASE_URL")
+        or cfg.get("base_url")
         or "https://apigw.ct-test.hse-compliance.net",
         "endpoints": {},
     }

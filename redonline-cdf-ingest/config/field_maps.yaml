@@ -1,5 +1,6 @@
 # Map HSE / RAW columns → Cognite Data Model view properties.
-# Adjust property names after you inspect a live API response and the CDF views.
+# Placeholder field names until discover_rol_schema.py + live CDF views confirm them.
+# After discovery: align keys with samples/rol/schema_summary.md and view properties.
 
 site:
   externalId: id

@@ -1,19 +1,20 @@
 # HSE Compliance (Red Online) REST endpoint catalog
 # Source: hse_compliance_api_endpoints.md
-# Base: https://apigw.ct-test.hse-compliance.net
+
+# Prefer REDONLINE_BASE_URL env; this is the fallback for ct-test
+base_url: https://apigw.ct-test.hse-compliance.net
 
 auth:
-  # API key sent as a custom header (not Bearer)
+  # API key sent as custom header X-ROL-API-KEY (not Bearer)
   style: header
   header_name: X-ROL-API-KEY
-  # Prefer REDONLINE_API_KEY / REDONLINE_TOKEN from the environment.
-  # Fallback for local wiring against ct-test:
+  # Prefer REDONLINE_API_KEY from .env; fallback below for ct-test
   api_key: "9f5ef52b-b98d-4cdb-9672-e423cc9051d5"
 
 defaults:
   timeout_seconds: 60
   page_size: 100
-  # Example IDs from the API doc — override via env REDONLINE_SITE_ID / REDONLINE_USER_ID
+  # From API doc examples — override via REDONLINE_SITE_ID / REDONLINE_USER_ID
   site_id: "112087"
   user_id: "584646"
 
@@ -22,7 +23,7 @@ endpoints:
     method: GET
     path: /v2/secure-clients/legapi-general/sites
     query: {}
-    # Response shape unknown until first live call — adjust items_path if wrapped
+    # Adjust after discover_rol_schema.py if response is wrapped
     items_path: null
     pagination:
       type: none

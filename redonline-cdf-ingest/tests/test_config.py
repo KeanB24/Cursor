@@ -24,6 +24,7 @@ def test_load_settings() -> None:
 
 def test_load_endpoints() -> None:
     endpoints = load_endpoints()
+    assert endpoints["base_url"] == "https://apigw.ct-test.hse-compliance.net"
     assert endpoints["auth"]["header_name"] == "X-ROL-API-KEY"
     assert endpoints["auth"]["style"] == "header"
     names = set(endpoints["endpoints"])
