@@ -69,7 +69,15 @@ class RedOnlineClient:
         )
         self.fixtures_dir = fixtures_dir or (project_root() / "fixtures")
         self._owns_http = http_client is None
-        self._http = http_client or httpx.Client(timeout=self._timeout())
+        verify_ssl = os.getenv("REDONLINE_VERIFY_SSL", "1").lower() not in {
+            "0",
+            "false",
+            "no",
+        }
+        self._http = http_client or httpx.Client(
+            timeout=self._timeout(),
+            verify=verify_ssl,
+        )
 
     def _resolve_base_url(self, base_url: str | None) -> str:
         if base_url:

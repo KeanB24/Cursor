@@ -1,16 +1,13 @@
 #!/usr/bin/env python
 """
-Call live ROL / HSE APIs and save responses for RAW table design.
+Standalone ROL / HSE API discovery — no package imports.
 
-Writes under samples/rol/:
-  - <endpoint>_raw.json      full API response
-  - <endpoint>_items.json    extracted item list (best effort)
-  - schema_summary.json      inferred fields per endpoint
-  - schema_summary.md        human-readable field catalog
+Calls each endpoint, saves JSON under samples/rol/, and prints field hints
+for Cognite RAW design.
 
-Usage:
+Usage (from redonline-cdf-ingest folder):
   python scripts/discover_rol_schema.py
-  python scripts/discover_rol_schema.py --endpoints list_sites list_tasks_by_user
+  python scripts/discover_rol_schema.py --insecure
 """
 
 from __future__ import annotations
@@ -18,24 +15,67 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import ssl
 import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.error import HTTPError, URLError
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
-os.environ.setdefault("CONFIG_DIR", str(ROOT / "config"))
+CONFIG_PATH = ROOT / "config" / "endpoints.yaml"
+OUT_DIR = ROOT / "samples" / "rol"
 
 
-def _ensure_dotenv() -> None:
+def _load_dotenv() -> None:
+    env_path = ROOT / ".env"
+    if not env_path.exists():
+        return
+    for line in env_path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+
+
+def _load_yaml(path: Path) -> dict[str, Any]:
     try:
-        from dotenv import load_dotenv
+        import yaml
+    except ImportError as exc:
+        raise SystemExit(
+            "PyYAML is required. Run: python -m pip install PyYAML"
+        ) from exc
+    with path.open(encoding="utf-8") as fh:
+        data = yaml.safe_load(fh) or {}
+    if not isinstance(data, dict):
+        raise SystemExit(f"Expected mapping in {path}")
+    return data
 
-        load_dotenv(ROOT / ".env")
-    except ImportError:
-        pass
+
+def _dig(data: Any, path: str | None) -> Any:
+    if not path:
+        return data
+    current = data
+    for part in path.split("."):
+        if not isinstance(current, dict):
+            return None
+        current = current.get(part)
+    return current
+
+
+def _as_items(payload: Any, items_path: str | None) -> list[Any]:
+    node = _dig(payload, items_path) if items_path else payload
+    if node is None:
+        return []
+    if isinstance(node, list):
+        return node
+    if isinstance(node, dict):
+        return [node]
+    return []
 
 
 def _infer_type(value: Any) -> str:
@@ -56,17 +96,10 @@ def _infer_type(value: Any) -> str:
     return type(value).__name__
 
 
-def _walk_fields(
-    obj: Any,
-    prefix: str = "",
-    out: dict[str, set[str]] | None = None,
-) -> dict[str, set[str]]:
-    """Collect dotted field paths and observed types from sample objects."""
+def _walk_fields(obj: Any, prefix: str = "", out: dict[str, set[str]] | None = None):
     if out is None:
         out = defaultdict(set)
     if isinstance(obj, dict):
-        if not obj and prefix:
-            out[prefix].add("object")
         for key, value in obj.items():
             path = f"{prefix}.{key}" if prefix else str(key)
             out[path].add(_infer_type(value))
@@ -78,189 +111,224 @@ def _walk_fields(
 
 
 def _guess_id_field(fields: dict[str, set[str]]) -> str | None:
-    candidates = [
-        "id",
-        "Id",
-        "ID",
-        "externalId",
-        "external_id",
-        "task_id",
-        "taskId",
-        "user_id",
-        "userId",
-        "site_id",
-        "siteId",
-    ]
-    top_level = [f for f in fields if "." not in f and "[]" not in f]
+    candidates = ["id", "Id", "ID", "externalId", "taskId", "userId", "siteId"]
+    top = [f for f in fields if "." not in f and "[]" not in f]
     for name in candidates:
-        if name in top_level:
+        if name in top:
             return name
-    return top_level[0] if top_level else None
+    return top[0] if top else None
 
 
 def _detect_items_path(payload: Any) -> str | None:
-    """Suggest items_path for endpoints.yaml from a live payload."""
     if isinstance(payload, list):
-        return None  # root list
+        return None
     if not isinstance(payload, dict):
         return None
     for path in ("data.items", "items", "data", "results", "value"):
-        from redonline_cdf.redonline.client import dig
-
-        node = dig(payload, path)
-        if isinstance(node, list):
+        if isinstance(_dig(payload, path), list):
             return path
-    # first list-valued key at top level
     for key, value in payload.items():
         if isinstance(value, list):
             return key
     return None
 
 
-def main(argv: list[str] | None = None) -> int:
-    _ensure_dotenv()
+def _render(template: str, vars_: dict[str, str]) -> str:
+    out = template
+    for key, value in vars_.items():
+        out = out.replace(f"{{{key}}}", value)
+    return out
 
-    parser = argparse.ArgumentParser(
-        description="Discover ROL API response shapes for Cognite RAW design"
-    )
+
+def _http_get(
+    url: str,
+    headers: dict[str, str],
+    params: dict[str, Any],
+    *,
+    insecure: bool,
+    timeout: float,
+) -> Any:
+    if params:
+        url = f"{url}?{urlencode({k: str(v) for k, v in params.items()})}"
+    req = Request(url, headers=headers, method="GET")
+    context = ssl._create_unverified_context() if insecure else None
+    try:
+        with urlopen(req, timeout=timeout, context=context) as resp:
+            body = resp.read().decode("utf-8")
+            return json.loads(body) if body else None
+    except HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")
+        raise RuntimeError(f"HTTP {exc.code} for {url}: {detail[:500]}") from exc
+    except URLError as exc:
+        raise RuntimeError(f"Connection failed for {url}: {exc}") from exc
+
+
+def main(argv: list[str] | None = None) -> int:
+    _load_dotenv()
+
+    parser = argparse.ArgumentParser(description="Discover ROL API response shapes")
+    parser.add_argument("--endpoints", nargs="*", default=None)
+    parser.add_argument("--out", default=str(OUT_DIR))
     parser.add_argument(
-        "--endpoints",
-        nargs="*",
-        default=None,
-        help="Endpoint names from endpoints.yaml (default: all)",
-    )
-    parser.add_argument(
-        "--out",
-        default=str(ROOT / "samples" / "rol"),
-        help="Output directory for saved responses",
+        "--insecure",
+        action="store_true",
+        help="Disable TLS certificate verification (corporate SSL interception)",
     )
     args = parser.parse_args(argv)
 
-    from redonline_cdf.auth import resolve_redonline_token
-    from redonline_cdf.config import load_endpoints
-    from redonline_cdf.redonline.client import RedOnlineClient, dig
-    from redonline_cdf.redonline.client import _as_item_list  # type: ignore
+    insecure = args.insecure or os.getenv("REDONLINE_VERIFY_SSL", "1").lower() in {
+        "0",
+        "false",
+        "no",
+    }
+
+    if not CONFIG_PATH.exists():
+        print(f"ERROR: config not found: {CONFIG_PATH}")
+        print("Run this script from the redonline-cdf-ingest project, or keep config/ next to scripts/.")
+        return 1
+
+    cfg = _load_yaml(CONFIG_PATH)
+    base_url = (
+        os.getenv("REDONLINE_BASE_URL")
+        or str(cfg.get("base_url") or "")
+    ).rstrip("/")
+    auth = cfg.get("auth") or {}
+    api_key = (
+        os.getenv("REDONLINE_API_KEY")
+        or os.getenv("REDONLINE_TOKEN")
+        or auth.get("api_key")
+        or ""
+    )
+    defaults = cfg.get("defaults") or {}
+    site_id = os.getenv("REDONLINE_SITE_ID") or str(defaults.get("site_id", "112087"))
+    user_id = os.getenv("REDONLINE_USER_ID") or str(defaults.get("user_id", "584646"))
+    timeout = float(defaults.get("timeout_seconds", 60))
+    vars_ = {"site_id": site_id, "user_id": user_id, "page_size": "100"}
+
+    print("=== ROL discovery ===")
+    print(f"project root : {ROOT}")
+    print(f"config       : {CONFIG_PATH}")
+    print(f"base_url     : {base_url or '(MISSING)'}")
+    print(f"api_key set  : {bool(api_key)} (header {auth.get('header_name', 'X-ROL-API-KEY')})")
+    print(f"site_id      : {site_id}")
+    print(f"user_id      : {user_id}")
+    print(f"tls verify   : {not insecure}")
+    print()
+
+    if not base_url:
+        print("ERROR: base_url missing. Set REDONLINE_BASE_URL or config/endpoints.yaml base_url.")
+        return 1
+    if not api_key:
+        print("ERROR: API key missing. Set REDONLINE_API_KEY or auth.api_key in endpoints.yaml.")
+        return 1
 
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    cfg = load_endpoints()
-    endpoint_names = args.endpoints or list((cfg.get("endpoints") or {}).keys())
+    endpoints = cfg.get("endpoints") or {}
+    names = args.endpoints or list(endpoints.keys())
+    header_name = str(auth.get("header_name") or "X-ROL-API-KEY")
 
-    token = resolve_redonline_token()
     summary: dict[str, Any] = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "base_url": os.getenv("REDONLINE_BASE_URL")
-        or cfg.get("base_url")
-        or "https://apigw.ct-test.hse-compliance.net",
+        "base_url": base_url,
+        "insecure_tls": insecure,
         "endpoints": {},
     }
-
-    md_lines = [
+    md = [
         "# ROL API schema discovery",
         "",
         f"Generated: `{summary['generated_at']}`",
-        "",
-        "Use this to set `items_path` in `config/endpoints.yaml` and RAW columns / `field_maps.yaml`.",
+        f"Base URL: `{base_url}`",
+        f"TLS verify: `{not insecure}`",
         "",
     ]
 
-    with RedOnlineClient(token=token, mock=False) as client:
-        for name in endpoint_names:
-            print(f"Calling {name}...")
-            endpoint = client._endpoint(name)
-            try:
-                payload = client._request(endpoint)
-            except Exception as exc:  # noqa: BLE001 — discovery should continue
-                print(f"  FAILED: {type(exc).__name__}: {exc}")
-                summary["endpoints"][name] = {"error": str(exc)}
-                md_lines.extend([f"## `{name}`", "", f"**Error:** `{exc}`", ""])
-                continue
+    for name in names:
+        ep = endpoints.get(name)
+        if not ep:
+            print(f"SKIP unknown endpoint: {name}")
+            continue
 
-            raw_path = out_dir / f"{name}_raw.json"
-            raw_path.write_text(
-                json.dumps(payload, indent=2, default=str), encoding="utf-8"
-            )
+        path = _render(str(ep.get("path", "/")), vars_)
+        for key, value in (ep.get("path_params") or {}).items():
+            path = path.replace(f"{{{key}}}", _render(str(value), vars_))
 
-            suggested_items_path = _detect_items_path(payload)
-            items_path = endpoint.get("items_path")
-            if items_path is None and suggested_items_path is not None:
-                # Prefer detected path when config says null but response is wrapped
-                try_path = suggested_items_path
-            else:
-                try_path = items_path
+        query: dict[str, Any] = {}
+        for key, value in (ep.get("query") or {}).items():
+            query[key] = _render(str(value), vars_) if isinstance(value, str) else value
 
-            try:
-                items = _as_item_list(payload, try_path)
-            except ValueError:
-                items = []
-                if isinstance(payload, dict):
-                    items = [payload]
+        url = f"{base_url}{path}"
+        headers = {"Accept": "application/json", header_name: api_key}
 
-            items_path_file = out_dir / f"{name}_items.json"
-            items_path_file.write_text(
-                json.dumps(items, indent=2, default=str), encoding="utf-8"
-            )
+        print(f"GET {url} params={query}")
+        try:
+            payload = _http_get(url, headers, query, insecure=insecure, timeout=timeout)
+        except Exception as exc:  # noqa: BLE001
+            print(f"  FAILED: {type(exc).__name__}: {exc}")
+            if "CERTIFICATE" in str(exc).upper() or "SSL" in str(exc).upper():
+                print("  Hint: re-run with --insecure  (corporate SSL interception)")
+            summary["endpoints"][name] = {"error": str(exc), "url": url}
+            md.extend([f"## `{name}`", "", f"**Error:** `{exc}`", ""])
+            continue
 
-            field_types: dict[str, set[str]] = defaultdict(set)
-            for item in items[:50]:
-                if isinstance(item, dict):
-                    _walk_fields(item, "", field_types)
+        raw_path = out_dir / f"{name}_raw.json"
+        raw_path.write_text(json.dumps(payload, indent=2, default=str), encoding="utf-8")
 
-            fields = {
-                path: sorted(types) for path, types in sorted(field_types.items())
-            }
-            id_field = _guess_id_field(field_types)
+        suggested = _detect_items_path(payload)
+        items_path = ep.get("items_path")
+        try_path = suggested if items_path is None and suggested is not None else items_path
+        items = _as_items(payload, try_path)
 
-            entry = {
-                "raw_file": str(raw_path.relative_to(ROOT)),
-                "items_file": str(items_path_file.relative_to(ROOT)),
-                "item_count": len(items),
-                "configured_items_path": items_path,
-                "suggested_items_path": suggested_items_path,
-                "suggested_id_field": id_field,
-                "fields": fields,
-                "sample_item": items[0] if items else None,
-            }
-            summary["endpoints"][name] = entry
+        items_file = out_dir / f"{name}_items.json"
+        items_file.write_text(json.dumps(items, indent=2, default=str), encoding="utf-8")
 
-            print(
-                f"  saved {raw_path.name} ({len(items)} items); "
-                f"suggested items_path={suggested_items_path!r}; id={id_field!r}"
-            )
+        field_types: dict[str, set[str]] = defaultdict(set)
+        for item in items[:50]:
+            if isinstance(item, dict):
+                _walk_fields(item, "", field_types)
+        fields = {p: sorted(t) for p, t in sorted(field_types.items())}
+        id_field = _guess_id_field(field_types)
 
-            md_lines.extend(
-                [
-                    f"## `{name}`",
-                    "",
-                    f"- Raw: `{entry['raw_file']}`",
-                    f"- Items: `{entry['items_file']}` ({len(items)} rows)",
-                    f"- Configured `items_path`: `{items_path}`",
-                    f"- Suggested `items_path`: `{suggested_items_path}`",
-                    f"- Suggested RAW row key: `{id_field}`",
-                    "",
-                    "| Field | Observed types |",
-                    "|-------|----------------|",
-                ]
-            )
-            for path, types in fields.items():
-                md_lines.append(f"| `{path}` | {', '.join(types)} |")
-            md_lines.append("")
+        summary["endpoints"][name] = {
+            "url": url,
+            "raw_file": str(raw_path.relative_to(ROOT)),
+            "items_file": str(items_file.relative_to(ROOT)),
+            "item_count": len(items),
+            "suggested_items_path": suggested,
+            "suggested_id_field": id_field,
+            "fields": fields,
+            "sample_item": items[0] if items else None,
+        }
+        print(
+            f"  OK -> {raw_path.name} | items={len(items)} | "
+            f"items_path={suggested!r} | id={id_field!r}"
+        )
 
-    summary_json = out_dir / "schema_summary.json"
-    summary_md = out_dir / "schema_summary.md"
-    summary_json.write_text(json.dumps(summary, indent=2, default=str), encoding="utf-8")
-    summary_md.write_text("\n".join(md_lines), encoding="utf-8")
+        md.extend(
+            [
+                f"## `{name}`",
+                "",
+                f"- URL: `{url}`",
+                f"- Raw: `{raw_path.relative_to(ROOT)}`",
+                f"- Items: {len(items)}",
+                f"- Suggested items_path: `{suggested}`",
+                f"- Suggested id field: `{id_field}`",
+                "",
+                "| Field | Types |",
+                "|-------|-------|",
+            ]
+        )
+        for path_name, types in fields.items():
+            md.append(f"| `{path_name}` | {', '.join(types)} |")
+        md.append("")
 
+    (out_dir / "schema_summary.json").write_text(
+        json.dumps(summary, indent=2, default=str), encoding="utf-8"
+    )
+    (out_dir / "schema_summary.md").write_text("\n".join(md), encoding="utf-8")
     print()
-    print(f"Wrote {summary_json}")
-    print(f"Wrote {summary_md}")
-    print()
-    print("Next:")
-    print("  1. Open samples/rol/*_raw.json and confirm the response shape")
-    print("  2. Set items_path / id_field in config/endpoints.yaml and settings.yaml")
-    print("  3. Map fields in config/field_maps.yaml from schema_summary.md")
-    print("  4. Re-run: python scripts/run_local.py --dry-run")
+    print(f"Wrote {out_dir / 'schema_summary.md'}")
     return 0
 
 

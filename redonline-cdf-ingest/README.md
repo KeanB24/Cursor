@@ -78,13 +78,25 @@ Best way to design Cognite RAW tables: call each ROL API once, save the JSON,
 then build columns from the real fields.
 
 ```powershell
-python scripts/discover_rol_schema.py
+python scripts/discover_rol_schema.py --insecure
 ```
+
+`--insecure` disables TLS verify (needed on many corporate laptops that show
+`CERTIFICATE_VERIFY_FAILED`). Same effect: `REDONLINE_VERIFY_SSL=0` in `.env`.
+
+This script is **standalone** (stdlib + PyYAML only). It does **not** import
+`src/redonline_cdf`.
 
 Optional — only some endpoints:
 
 ```powershell
-python scripts/discover_rol_schema.py --endpoints list_sites list_tasks_by_user
+python scripts/discover_rol_schema.py --insecure --endpoints list_sites list_tasks_by_user
+```
+
+Or use the simple notebook (no package imports):
+
+```text
+notebooks/call_rol_apis.ipynb
 ```
 
 This writes under `samples/rol/` (gitignored):
@@ -167,6 +179,22 @@ scripts/run_local.py
 tests/
 notebooks/        Cognite connection sample
 ```
+
+## Package layout note
+
+Code lives under `src/redonline_cdf/` (standard Python `src` layout). That is why
+imports look like `from redonline_cdf...` — the folder is `src/redonline_cdf`, not
+a top-level `redonline_cdf/`. Discovery/notebooks do **not** need that package.
+
+## Troubleshooting
+
+| Error | Fix |
+|-------|-----|
+| `No such file: requirements.txt` | `cd` into `redonline-cdf-ingest` first |
+| `Set REDONLINE_API_KEY...` | Copy `.env.example` → `.env`, or keep `auth.api_key` in `endpoints.yaml` |
+| `REDONLINE_BASE_URL is required` | Set in `.env` or `base_url` in `endpoints.yaml` |
+| `CERTIFICATE_VERIFY_FAILED` | `python scripts/discover_rol_schema.py --insecure` or `REDONLINE_VERIFY_SSL=0` |
+| Hard to debug ingest pipeline | Prefer `notebooks/call_rol_apis.ipynb` or `discover_rol_schema.py` first |
 
 ## Tests
 
