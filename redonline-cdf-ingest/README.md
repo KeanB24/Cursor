@@ -43,13 +43,20 @@ copy .env.example .env
 Edit `.env` and set real Cognite OIDC values (`CDF_CLIENT_ID`, `CDF_CLIENT_SECRET`, `CDF_TENANT_ID`).
 The HSE API key and base URL are already filled from the ct-test details.
 
-### 2. Install (once)
+### 2. Install packages (once, no virtualenv)
+
+Use your normal Python (e.g. Anaconda or system Python). No `.venv` needed.
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\activate
-pip install -r requirements.txt
-pip install -e .
+python -m pip install -r requirements.txt
+python -m pip install -e .
+```
+
+If you use Anaconda for notebooks/Jupyter, install with that interpreter so the same packages are available there:
+
+```powershell
+C:\Users\neelk\anaconda3\python.exe -m pip install -r requirements.txt
+C:\Users\neelk\anaconda3\python.exe -m pip install -e .
 ```
 
 ### 3. Dry-run with fixtures (no network)
