@@ -1,0 +1,14 @@
+[
+  {
+    "id": "112087",
+    "name": "Example Site",
+    "code": "SITE-112087",
+    "updatedAt": "2026-03-18T10:00:00Z"
+  },
+  {
+    "id": "112088",
+    "name": "Second Site",
+    "code": "SITE-112088",
+    "updatedAt": "2026-03-19T10:00:00Z"
+  }
+]

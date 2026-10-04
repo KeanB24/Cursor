@@ -1,0 +1,16 @@
+[
+  {
+    "id": "584646",
+    "name": "Example User",
+    "email": "user@example.com",
+    "siteId": "112087",
+    "updatedAt": "2026-03-18T11:00:00Z"
+  },
+  {
+    "id": "156028",
+    "name": "Second User",
+    "email": "user2@example.com",
+    "siteId": "112087",
+    "updatedAt": "2026-03-18T12:00:00Z"
+  }
+]

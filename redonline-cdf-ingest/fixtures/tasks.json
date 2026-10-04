@@ -1,29 +1,22 @@
-{
-  "data": {
-    "items": [
-      {
-        "id": "TASK-2001",
-        "title": "Collect witness statements",
-        "description": "Interview operators on shift",
-        "status": "Open",
-        "actionId": "ACT-1001",
-        "dueDate": "2026-03-20",
-        "assignee": "j.smith",
-        "updatedAt": "2026-03-15T11:00:00Z",
-        "createdAt": "2026-03-15T10:05:00Z"
-      },
-      {
-        "id": "TASK-2002",
-        "title": "Draft SOP revision",
-        "description": "First draft for peer review",
-        "status": "InProgress",
-        "actionId": "ACT-1002",
-        "dueDate": "2026-04-01",
-        "assignee": "a.patel",
-        "updatedAt": "2026-03-18T15:00:00Z",
-        "createdAt": "2026-03-12T09:30:00Z"
-      }
-    ],
-    "nextPageToken": null
+[
+  {
+    "id": "TASK-2001",
+    "title": "Collect witness statements",
+    "description": "Interview operators on shift",
+    "status": "Open",
+    "userId": "584646",
+    "dueDate": "2026-03-20",
+    "updatedAt": "2026-03-15T11:00:00Z",
+    "createdAt": "2026-03-15T10:05:00Z"
+  },
+  {
+    "id": "TASK-2002",
+    "title": "Draft SOP revision",
+    "description": "First draft for peer review",
+    "status": "InProgress",
+    "userId": "584646",
+    "dueDate": "2026-04-01",
+    "updatedAt": "2026-03-18T15:00:00Z",
+    "createdAt": "2026-03-12T09:30:00Z"
   }
-}
+]

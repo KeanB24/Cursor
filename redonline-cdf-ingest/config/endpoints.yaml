@@ -1,59 +1,60 @@
-# Placeholder Red Online REST endpoint catalog.
-# Replace paths, query params, and response item paths with real API contracts.
+# HSE Compliance (Red Online) REST endpoint catalog
+# Source: hse_compliance_api_endpoints.md
+# Base: https://apigw.ct-test.hse-compliance.net
 
 auth:
-  # How the client sends the token: bearer_header | header | query
-  style: bearer_header
-  header_name: Authorization
-  # Used when style is query
-  query_param: access_token
+  # API key sent as a custom header (not Bearer)
+  style: header
+  header_name: X-ROL-API-KEY
+  # Prefer REDONLINE_API_KEY / REDONLINE_TOKEN from the environment.
+  # Fallback for local wiring against ct-test:
+  api_key: "9f5ef52b-b98d-4cdb-9672-e423cc9051d5"
 
 defaults:
   timeout_seconds: 60
   page_size: 100
+  # Example IDs from the API doc — override via env REDONLINE_SITE_ID / REDONLINE_USER_ID
+  site_id: "112087"
+  user_id: "584646"
 
 endpoints:
-  list_actions:
+  list_sites:
     method: GET
-    path: /api/v1/actions
-    # Query params sent on every request (placeholders)
-    query:
-      pageSize: "{page_size}"
-    # Incremental filter — {since} replaced with watermark ISO timestamp when present
-    since_param: updatedSince
-    # Dot-path to the list of items in the JSON response
-    items_path: data.items
-    # Pagination: none | offset | page_token | link
+    path: /v2/secure-clients/legapi-general/sites
+    query: {}
+    # Response shape unknown until first live call — adjust items_path if wrapped
+    items_path: null
     pagination:
-      type: page_token
-      next_token_path: data.nextPageToken
-      token_param: pageToken
-    # Optional fixture file used when REDONLINE_MOCK=1
-    fixture: actions.json
+      type: none
+    fixture: sites.json
 
-  list_tasks:
+  list_users_by_site:
     method: GET
-    path: /api/v1/tasks
-    query:
-      pageSize: "{page_size}"
-    since_param: updatedSince
-    items_path: data.items
+    path: /v2/secure-clients/legapi-general/users/sites/{site_id}
+    path_params:
+      site_id: "{site_id}"
+    query: {}
+    items_path: null
     pagination:
-      type: page_token
-      next_token_path: data.nextPageToken
-      token_param: pageToken
+      type: none
+    fixture: users.json
+
+  list_mapping_references:
+    method: GET
+    path: /v2/secure-clients/tasks/configs/references
+    query:
+      user_id: "{user_id}"
+    items_path: null
+    pagination:
+      type: none
+    fixture: references.json
+
+  list_tasks_by_user:
+    method: GET
+    path: /v2/secure-clients/tasks
+    query:
+      user_id: "{user_id}"
+    items_path: null
+    pagination:
+      type: none
     fixture: tasks.json
-
-  list_categories:
-    method: GET
-    path: /api/v1/categories
-    query:
-      pageSize: "{page_size}"
-    since_param: updatedSince
-    items_path: data.items
-    pagination:
-      type: offset
-      offset_param: offset
-      limit_param: limit
-      total_path: data.total
-    fixture: categories.json

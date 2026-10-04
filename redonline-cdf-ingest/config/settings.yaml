@@ -1,47 +1,59 @@
-# Pipeline settings — replace placeholders with live CDF / Red Online values.
+# Pipeline settings — HSE Compliance → Cognite Action Item Management
 
 raw:
   database: redonline_staging
   tables:
-    actions: actions
+    sites: sites
+    users: users
+    references: references
     tasks: tasks
-    categories: categories
     ingestion_state: ingestion_state
 
 data_model:
   # Existing Action Item Management solution space / views in CDF
+  # Update external_id / version to match the live model
   instance_space: ac_action_item_management
   views:
-    action:
+    site:
       space: ac_action_item_management
-      external_id: Action
+      external_id: Site
+      version: "1"
+    user:
+      space: ac_action_item_management
+      external_id: User
+      version: "1"
+    reference:
+      space: ac_action_item_management
+      external_id: Reference
       version: "1"
     task:
       space: ac_action_item_management
       external_id: Task
       version: "1"
-    category:
-      space: ac_action_item_management
-      external_id: Category
-      version: "1"
 
 entities:
-  - name: actions
-    endpoint: list_actions
-    raw_table: actions
-    view_key: action
+  - name: sites
+    endpoint: list_sites
+    raw_table: sites
+    view_key: site
+    id_field: id
+    watermark_field: updatedAt
+  - name: users
+    endpoint: list_users_by_site
+    raw_table: users
+    view_key: user
+    id_field: id
+    watermark_field: updatedAt
+  - name: references
+    endpoint: list_mapping_references
+    raw_table: references
+    view_key: reference
     id_field: id
     watermark_field: updatedAt
   - name: tasks
-    endpoint: list_tasks
+    endpoint: list_tasks_by_user
     raw_table: tasks
     view_key: task
-    id_field: id
-    watermark_field: updatedAt
-  - name: categories
-    endpoint: list_categories
-    raw_table: categories
-    view_key: category
     id_field: id
     watermark_field: updatedAt
 

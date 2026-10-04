@@ -30,6 +30,22 @@ def dig(data: Any, path: str | None) -> Any:
     return current
 
 
+def _as_item_list(payload: Any, items_path: str | None) -> list[Any]:
+    """Extract a list of items; null/empty path means payload itself may be the list."""
+    if items_path:
+        items = dig(payload, items_path)
+    else:
+        items = payload
+    if items is None:
+        return []
+    if isinstance(items, list):
+        return items
+    if isinstance(items, dict):
+        # Single object response — treat as one-item list
+        return [items]
+    raise ValueError(f"Expected list (or object) at items_path={items_path!r}, got {type(items)}")
+
+
 class RedOnlineClient:
     """Fetch paginated entity lists from Red Online using endpoints.yaml."""
 
@@ -45,7 +61,7 @@ class RedOnlineClient:
     ) -> None:
         self._config = endpoints_config or load_endpoints()
         self.base_url = (base_url or os.getenv("REDONLINE_BASE_URL", "")).rstrip("/")
-        self.token = token
+        self.token = token if token is not None else self._resolve_api_key()
         self.mock = (
             mock
             if mock is not None
@@ -55,6 +71,15 @@ class RedOnlineClient:
         self._owns_http = http_client is None
         self._http = http_client or httpx.Client(timeout=self._timeout())
 
+    def _resolve_api_key(self) -> str | None:
+        for name in ("REDONLINE_API_KEY", "REDONLINE_TOKEN"):
+            value = os.getenv(name)
+            if value:
+                return value
+        auth = self._config.get("auth") or {}
+        api_key = auth.get("api_key")
+        return str(api_key) if api_key else None
+
     def _timeout(self) -> float:
         defaults = self._config.get("defaults") or {}
         return float(defaults.get("timeout_seconds", 60))
@@ -62,6 +87,25 @@ class RedOnlineClient:
     def _page_size(self) -> int:
         defaults = self._config.get("defaults") or {}
         return int(defaults.get("page_size", 100))
+
+    def _template_vars(self) -> dict[str, str]:
+        defaults = self._config.get("defaults") or {}
+        return {
+            "page_size": str(self._page_size()),
+            "site_id": os.getenv("REDONLINE_SITE_ID")
+            or str(defaults.get("site_id", "")),
+            "user_id": os.getenv("REDONLINE_USER_ID")
+            or str(defaults.get("user_id", "")),
+        }
+
+    def _render(self, value: str, extra: dict[str, str] | None = None) -> str:
+        vars_ = self._template_vars()
+        if extra:
+            vars_.update(extra)
+        out = value
+        for key, replacement in vars_.items():
+            out = out.replace(f"{{{key}}}", replacement)
+        return out
 
     def close(self) -> None:
         if self._owns_http:
@@ -97,13 +141,20 @@ class RedOnlineClient:
             raise KeyError(f"Unknown endpoint '{name}' in endpoints.yaml")
         return endpoints[name]
 
-    def _load_fixture(self, endpoint: dict[str, Any]) -> dict[str, Any]:
+    def _load_fixture(self, endpoint: dict[str, Any]) -> Any:
         fixture_name = endpoint.get("fixture")
         if not fixture_name:
             raise RuntimeError("Mock mode requires a fixture file on the endpoint")
         path = self.fixtures_dir / fixture_name
         with path.open(encoding="utf-8") as fh:
             return json.load(fh)
+
+    def _resolve_path(self, endpoint: dict[str, Any]) -> str:
+        path = str(endpoint.get("path", "/"))
+        extra: dict[str, str] = {}
+        for key, value in (endpoint.get("path_params") or {}).items():
+            extra[str(key)] = self._render(str(value))
+        return self._render(path, extra)
 
     def _build_query(
         self,
@@ -116,7 +167,7 @@ class RedOnlineClient:
         query: dict[str, Any] = {}
         for key, value in (endpoint.get("query") or {}).items():
             if isinstance(value, str):
-                query[key] = value.replace("{page_size}", str(self._page_size()))
+                query[key] = self._render(value)
             else:
                 query[key] = value
 
@@ -141,7 +192,7 @@ class RedOnlineClient:
         since: str | None = None,
         page_token: str | None = None,
         offset: int | None = None,
-    ) -> dict[str, Any]:
+    ) -> Any:
         if self.mock:
             return self._load_fixture(endpoint)
 
@@ -149,7 +200,7 @@ class RedOnlineClient:
             raise RuntimeError("REDONLINE_BASE_URL is required when not in mock mode")
 
         method = str(endpoint.get("method", "GET")).upper()
-        path = str(endpoint.get("path", "/"))
+        path = self._resolve_path(endpoint)
         url = f"{self.base_url}{path}"
         headers, auth_params = self._auth_headers_and_params()
         query = self._build_query(
@@ -157,13 +208,10 @@ class RedOnlineClient:
         )
         query.update(auth_params)
 
-        logger.debug("%s %s params=%s", method, url, query)
+        logger.debug("%s %s params=%s headers_keys=%s", method, url, query, list(headers))
         resp = self._http.request(method, url, headers=headers, params=query)
         resp.raise_for_status()
-        payload = resp.json()
-        if not isinstance(payload, dict):
-            raise ValueError(f"Expected JSON object from {url}, got {type(payload)}")
-        return payload
+        return resp.json()
 
     def fetch_all(
         self,
@@ -183,7 +231,7 @@ class RedOnlineClient:
         endpoint = self._endpoint(endpoint_name)
         pagination = endpoint.get("pagination") or {}
         ptype = pagination.get("type", "none")
-        items_path = endpoint.get("items_path", "data.items")
+        items_path = endpoint.get("items_path")
 
         page_token: str | None = None
         offset = 0
@@ -196,14 +244,7 @@ class RedOnlineClient:
                 page_token=page_token,
                 offset=offset if ptype == "offset" else None,
             )
-            items = dig(payload, items_path)
-            if items is None:
-                items = []
-            if not isinstance(items, list):
-                raise ValueError(
-                    f"items_path '{items_path}' did not resolve to a list "
-                    f"for {endpoint_name}"
-                )
+            items = _as_item_list(payload, items_path)
 
             for item in items:
                 if isinstance(item, dict):
@@ -241,8 +282,7 @@ class RedOnlineClient:
                 resp = self._http.get(str(next_url), headers=headers)
                 resp.raise_for_status()
                 payload = resp.json()
-                items = dig(payload, items_path) or []
-                for item in items:
+                for item in _as_item_list(payload, items_path):
                     if isinstance(item, dict):
                         yield item
                 break

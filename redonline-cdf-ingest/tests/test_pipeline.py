@@ -38,10 +38,11 @@ def test_pipeline_dry_run_with_fixtures() -> None:
 
     assert result.dry_run is True
     by_name = {e.name: e for e in result.entities}
-    assert by_name["actions"].extracted == 2
+    assert by_name["sites"].extracted == 2
+    assert by_name["users"].extracted == 2
+    assert by_name["references"].extracted == 2
     assert by_name["tasks"].extracted == 2
-    assert by_name["categories"].extracted == 2
-    assert by_name["actions"].watermark == "2026-03-18T14:30:00Z"
+    assert by_name["tasks"].watermark == "2026-03-18T15:00:00Z"
 
 
 def test_dm_loader_build_nodes() -> None:
@@ -56,15 +57,15 @@ def test_dm_loader_build_nodes() -> None:
     )
     rows = [
         {
-            "id": "ACT-1001",
+            "id": "TASK-2001",
             "title": "Investigate",
             "status": "Open",
             "_source_system": "RedOnline",
         }
     ]
-    nodes = loader.build_nodes("action", rows)
+    nodes = loader.build_nodes("task", rows)
     assert len(nodes) == 1
-    assert nodes[0].external_id == "ACT-1001"
+    assert nodes[0].external_id == "TASK-2001"
     assert nodes[0].space == "ac_action_item_management"
     assert nodes[0].sources[0].properties["title"] == "Investigate"
 

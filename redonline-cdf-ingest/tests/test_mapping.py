@@ -22,11 +22,11 @@ def test_map_row_to_properties() -> None:
             "sourceSystem": "_source_system",
         },
     }
-    row = {"id": "ACT-1", "title": "Test", "status": "Open"}
+    row = {"id": "TASK-1", "title": "Test", "status": "Open"}
     external_id, props = map_row_to_properties(
         row, field_map, constants={"_source_system": "RedOnline"}
     )
-    assert external_id == "ACT-1"
+    assert external_id == "TASK-1"
     assert props == {
         "title": "Test",
         "status": "Open",
@@ -39,7 +39,7 @@ def test_map_row_skips_missing_values() -> None:
         "externalId": "id",
         "properties": {"title": "title", "assignee": "assignee"},
     }
-    row = {"id": "ACT-2", "title": "Only title"}
+    row = {"id": "TASK-2", "title": "Only title"}
     _, props = map_row_to_properties(row, field_map)
     assert props == {"title": "Only title"}
     assert "assignee" not in props

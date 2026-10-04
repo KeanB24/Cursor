@@ -1,19 +1,30 @@
-# Map Red Online / RAW columns → Cognite Data Model view properties.
-# Keys under each view are DM property names; values are source field names
-# (from the staged RAW row / Red Online payload). Adjust to match the live model.
+# Map HSE / RAW columns → Cognite Data Model view properties.
+# Adjust property names after you inspect a live API response and the CDF views.
 
-action:
+site:
   externalId: id
   properties:
-    title: title
-    description: description
-    status: status
-    categoryId: categoryId
-    dueDate: dueDate
-    priority: priority
-    assignee: assignee
+    name: name
+    code: code
     updatedAt: updatedAt
-    createdAt: createdAt
+    sourceSystem: _source_system
+
+user:
+  externalId: id
+  properties:
+    name: name
+    email: email
+    siteId: siteId
+    updatedAt: updatedAt
+    sourceSystem: _source_system
+
+reference:
+  externalId: id
+  properties:
+    label: label
+    code: code
+    userId: userId
+    updatedAt: updatedAt
     sourceSystem: _source_system
 
 task:
@@ -22,20 +33,10 @@ task:
     title: title
     description: description
     status: status
-    actionId: actionId
+    userId: userId
     dueDate: dueDate
-    assignee: assignee
     updatedAt: updatedAt
     createdAt: createdAt
-    sourceSystem: _source_system
-
-category:
-  externalId: id
-  properties:
-    name: name
-    code: code
-    description: description
-    updatedAt: updatedAt
     sourceSystem: _source_system
 
 # Constants injected into every staged / mapped row

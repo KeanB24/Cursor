@@ -16,91 +16,97 @@ FIXTURES = ROOT / "fixtures"
 @pytest.fixture
 def endpoints_config() -> dict:
     return {
-        "auth": {"style": "bearer_header"},
-        "defaults": {"timeout_seconds": 10, "page_size": 50},
+        "auth": {
+            "style": "header",
+            "header_name": "X-ROL-API-KEY",
+            "api_key": "test-api-key",
+        },
+        "defaults": {
+            "timeout_seconds": 10,
+            "page_size": 50,
+            "site_id": "112087",
+            "user_id": "584646",
+        },
         "endpoints": {
-            "list_actions": {
+            "list_sites": {
                 "method": "GET",
-                "path": "/api/v1/actions",
-                "query": {"pageSize": "{page_size}"},
-                "since_param": "updatedSince",
-                "items_path": "data.items",
-                "pagination": {
-                    "type": "page_token",
-                    "next_token_path": "data.nextPageToken",
-                    "token_param": "pageToken",
-                },
-                "fixture": "actions.json",
-            }
+                "path": "/v2/secure-clients/legapi-general/sites",
+                "query": {},
+                "items_path": None,
+                "pagination": {"type": "none"},
+                "fixture": "sites.json",
+            },
+            "list_users_by_site": {
+                "method": "GET",
+                "path": "/v2/secure-clients/legapi-general/users/sites/{site_id}",
+                "path_params": {"site_id": "{site_id}"},
+                "query": {},
+                "items_path": None,
+                "pagination": {"type": "none"},
+                "fixture": "users.json",
+            },
+            "list_tasks_by_user": {
+                "method": "GET",
+                "path": "/v2/secure-clients/tasks",
+                "query": {"user_id": "{user_id}"},
+                "items_path": None,
+                "pagination": {"type": "none"},
+                "fixture": "tasks.json",
+            },
         },
     }
 
 
-def test_mock_fetch_actions(endpoints_config: dict) -> None:
+def test_mock_fetch_sites(endpoints_config: dict) -> None:
     client = RedOnlineClient(
         endpoints_config=endpoints_config,
         mock=True,
         fixtures_dir=FIXTURES,
     )
-    items = client.fetch_all("list_actions")
+    items = client.fetch_all("list_sites")
     assert len(items) == 2
-    assert items[0]["id"] == "ACT-1001"
+    assert items[0]["id"] == "112087"
     client.close()
 
 
-def test_http_fetch_with_bearer(endpoints_config: dict) -> None:
+def test_http_fetch_with_api_key_header(endpoints_config: dict) -> None:
     def handler(request: httpx.Request) -> httpx.Response:
-        assert request.headers.get("Authorization") == "Bearer test-token"
-        assert request.url.params.get("pageSize") == "50"
-        assert request.url.params.get("updatedSince") == "2026-01-01T00:00:00Z"
+        assert request.headers.get("X-ROL-API-KEY") == "test-api-key"
+        assert "/users/sites/112087" in str(request.url)
         return httpx.Response(
             200,
-            json={"data": {"items": [{"id": "A1", "title": "From API"}], "nextPageToken": None}},
+            json=[{"id": "U1", "name": "From API"}],
         )
 
     transport = httpx.MockTransport(handler)
     http = httpx.Client(transport=transport)
     client = RedOnlineClient(
-        base_url="https://api.example.com",
-        token="test-token",
+        base_url="https://apigw.ct-test.hse-compliance.net",
+        token="test-api-key",
         endpoints_config=endpoints_config,
         mock=False,
         http_client=http,
     )
-    items = client.fetch_all("list_actions", since="2026-01-01T00:00:00Z")
-    assert items == [{"id": "A1", "title": "From API"}]
+    items = client.fetch_all("list_users_by_site")
+    assert items == [{"id": "U1", "name": "From API"}]
     client.close()
 
 
-def test_page_token_pagination(endpoints_config: dict) -> None:
-    pages = {
-        None: {
-            "data": {
-                "items": [{"id": "1"}],
-                "nextPageToken": "p2",
-            }
-        },
-        "p2": {
-            "data": {
-                "items": [{"id": "2"}],
-                "nextPageToken": None,
-            }
-        },
-    }
-
+def test_tasks_query_user_id(endpoints_config: dict) -> None:
     def handler(request: httpx.Request) -> httpx.Response:
-        token = request.url.params.get("pageToken")
-        return httpx.Response(200, json=pages.get(token, pages[None]))
+        assert request.url.params.get("user_id") == "584646"
+        assert request.headers.get("X-ROL-API-KEY") == "test-api-key"
+        return httpx.Response(200, json=[{"id": "T1"}])
 
     transport = httpx.MockTransport(handler)
     http = httpx.Client(transport=transport)
     client = RedOnlineClient(
-        base_url="https://api.example.com",
-        token="t",
+        base_url="https://apigw.example.com",
+        token="test-api-key",
         endpoints_config=endpoints_config,
         mock=False,
         http_client=http,
     )
-    items = client.fetch_all("list_actions")
-    assert [i["id"] for i in items] == ["1", "2"]
+    items = client.fetch_all("list_tasks_by_user")
+    assert items == [{"id": "T1"}]
     client.close()
