@@ -11,22 +11,52 @@ if TYPE_CHECKING:
     from cognite.client import CogniteClient
 
 
+def _settings_cognite() -> dict:
+    try:
+        from redonline_cdf.config import load_settings
+
+        return load_settings().get("cognite") or {}
+    except Exception:  # noqa: BLE001 — optional fallback only
+        return {}
+
+
 def create_cognite_client() -> CogniteClient:
     """Build a CogniteClient from environment variables (OIDC client credentials)."""
     from cognite.client import CogniteClient
     from cognite.client.config import ClientConfig
     from cognite.client.credentials import OAuthClientCredentials
 
-    project = os.environ["CDF_PROJECT"]
-    cluster = os.environ.get("CDF_CLUSTER", "westeurope-1")
-    client_id = os.environ["CDF_CLIENT_ID"]
-    client_secret = os.environ["CDF_CLIENT_SECRET"]
-    tenant_id = os.environ["CDF_TENANT_ID"]
-    token_url = os.environ.get(
+    cfg = _settings_cognite()
+    project = os.getenv("CDF_PROJECT") or cfg.get("project")
+    cluster = os.getenv("CDF_CLUSTER") or cfg.get("cluster") or "az-eastus-1"
+    client_id = os.getenv("CDF_CLIENT_ID")
+    client_secret = os.getenv("CDF_CLIENT_SECRET")
+    tenant_id = os.getenv("CDF_TENANT_ID")
+
+    missing = [
+        name
+        for name, value in (
+            ("CDF_PROJECT", project),
+            ("CDF_CLIENT_ID", client_id),
+            ("CDF_CLIENT_SECRET", client_secret),
+            ("CDF_TENANT_ID", tenant_id),
+        )
+        if not value
+    ]
+    if missing:
+        raise RuntimeError(
+            "Missing Cognite credentials in .env (required for RAW write, "
+            "not needed for --dry-run): "
+            + ", ".join(missing)
+            + ". Copy from .env.example or set them manually, then re-run "
+            "without --dry-run."
+        )
+
+    token_url = os.getenv(
         "CDF_TOKEN_URL",
         f"https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token",
     )
-    base_url = f"https://{cluster}.cognitedata.com"
+    base_url = str(cfg.get("base_url") or f"https://{cluster}.cognitedata.com")
     scopes = [f"{base_url}/.default"]
 
     creds = OAuthClientCredentials(
@@ -37,7 +67,7 @@ def create_cognite_client() -> CogniteClient:
     )
     config = ClientConfig(
         client_name="redonline-cdf-ingest",
-        project=project,
+        project=str(project),
         base_url=base_url,
         credentials=creds,
     )

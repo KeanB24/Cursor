@@ -86,6 +86,7 @@ python scripts/run_local.py --insecure             # live ROL + CDF RAW write
 - `CERTIFICATE_VERIFY_FAILED` on dry-run → discovery had `--insecure` but ingest CLI did not; use `run_local.py --insecure` (now synced) / `REDONLINE_VERIFY_SSL=0`
 - `samples/rol/` missing after pull → was gitignored; ignore removed
 - Cognite secret invalid (`AADSTS7000215`) → may need new Azure client secret
+- `KeyError: CDF_CLIENT_ID` / missing Cognite creds → `--dry-run` skips CDF; full run needs `CDF_PROJECT`, `CDF_CLIENT_ID`, `CDF_CLIENT_SECRET`, `CDF_TENANT_ID` in project-root `.env` (copy from `.env.example`)
 - Complex imports confused user → discovery/notebook are standalone; package is under `src/`
 
 ## Next work for new agent

@@ -28,14 +28,24 @@ def _load_project_dotenv(root: Path) -> None:
     try:
         from dotenv import load_dotenv
 
-        load_dotenv(env_path)
+        # utf-8-sig strips a Windows BOM that would otherwise break key names
+        load_dotenv(env_path, encoding="utf-8-sig")
         return
+    except TypeError:
+        # Older python-dotenv without encoding= support
+        try:
+            from dotenv import load_dotenv
+
+            load_dotenv(env_path)
+            return
+        except ImportError:
+            pass
     except ImportError:
         pass
 
     if not env_path.exists():
         return
-    for line in env_path.read_text(encoding="utf-8").splitlines():
+    for line in env_path.read_text(encoding="utf-8-sig").splitlines():
         line = line.strip()
         if not line or line.startswith("#") or "=" not in line:
             continue
@@ -106,7 +116,16 @@ def main(argv: list[str] | None = None) -> int:
 
     cognite = None
     if not args.dry_run:
-        cognite = create_cognite_client()
+        try:
+            cognite = create_cognite_client()
+        except RuntimeError as exc:
+            log.error("%s", exc)
+            return 1
+        log.info(
+            "Cognite client ready project=%s cluster=%s",
+            os.getenv("CDF_PROJECT"),
+            os.getenv("CDF_CLUSTER", "az-eastus-1"),
+        )
 
     with RedOnlineClient(token=token, mock=mock, verify_ssl=verify_ssl) as red:
         result = run_ingest(
