@@ -108,3 +108,80 @@ Traceback (most recent call last):
     raise mapped_exc(message) from exc
 httpx.ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1002)
 (base) PS C:\Users\CRANB1\Cursor\Cursor\redonline-cdf-ingest> 
+
+(base) PS C:\Users\CRANB1\Cursor\Cursor\redonline-cdf-ingest> python scripts/run_local.py --dry-run --insecure
+2026-10-04 20:44:45,408 INFO redonline_cdf.cli Starting ingest mock=False dry_run=True tls_verify=False env=C:\Users\CRANB1\Cursor\Cursor\redonline-cdf-ingest\.env
+2026-10-04 20:44:45,730 WARNING redonline_cdf.redonline.client TLS certificate verification disabled for Red Online (REDONLINE_VERIFY_SSL=0 / --insecure)
+2026-10-04 20:44:45,738 INFO redonline_cdf.pipeline.ingest Cascaded ingest: fetching sites
+Traceback (most recent call last):
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpcore\_sync\connection_pool.py", line 216, in handle_request
+    raise exc from None
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpcore\_sync\connection_pool.py", line 196, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpcore\_sync\http_proxy.py", line 344, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpcore\_sync\http11.py", line 143, in handle_request
+    raise exc
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpcore\_sync\http11.py", line 113, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpcore\_sync\http11.py", line 186, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpcore\_sync\http11.py", line 238, in _receive_event
+    raise RemoteProtocolError(msg)
+httpcore.RemoteProtocolError: Server disconnected without sending a response.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\CRANB1\Cursor\Cursor\redonline-cdf-ingest\scripts\run_local.py", line 15, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\CRANB1\Cursor\Cursor\redonline-cdf-ingest\src\redonline_cdf\cli.py", line 112, in main
+    result = run_ingest(
+             ^^^^^^^^^^^
+  File "C:\Users\CRANB1\Cursor\Cursor\redonline-cdf-ingest\src\redonline_cdf\pipeline\ingest.py", line 413, in run_ingest
+    return pipeline.run(entities=entities).as_dict()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\Cursor\Cursor\redonline-cdf-ingest\src\redonline_cdf\pipeline\ingest.py", line 147, in run
+    coerce_record(i) for i in self.redonline.fetch_all("list_sites")
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\Cursor\Cursor\redonline-cdf-ingest\src\redonline_cdf\redonline\client.py", line 266, in fetch_all
+    return list(self.iter_items(endpoint_name, since=since, path_vars=path_vars))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\Cursor\Cursor\redonline-cdf-ingest\src\redonline_cdf\redonline\client.py", line 285, in iter_items
+    payload = self._request(
+              ^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\Cursor\Cursor\redonline-cdf-ingest\src\redonline_cdf\redonline\client.py", line 254, in _request
+    resp = self._http.request(method, url, headers=headers, params=query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\CRANB1\AppData\Local\anaconda3\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.RemoteProtocolError: Server disconnected without sending a response.
