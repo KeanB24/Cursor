@@ -117,11 +117,15 @@ Then:
 
 ### 5. Live HSE pull only (no Cognite write)
 
+On corporate laptops that needed `--insecure` for discovery, use the same flag here
+(or keep `REDONLINE_VERIFY_SSL=0` in `.env`):
+
 ```powershell
-python scripts/run_local.py --dry-run
+python scripts/run_local.py --dry-run --insecure
 ```
 
 Calls the real HSE APIs with `X-ROL-API-KEY` and prints what would be staged/loaded.
+Startup logs show `tls_verify=False` when SSL verify is disabled.
 
 ### 6. Full RAW ingest into Cognite (`ROL-COR`)
 
@@ -136,7 +140,7 @@ Tables: `Sites`, `Users`, `User_profiles`, `Tasks`, `Task_instances`,
 Optional volume limits in `config/settings.yaml` under `cascaded.max_*`.
 
 ```powershell
-python scripts/run_local.py
+python scripts/run_local.py --insecure
 ```
 
 Requires working CDF credentials in `.env` and network access to both HSE and CDF.
@@ -205,7 +209,7 @@ a top-level `redonline_cdf/`. Discovery/notebooks do **not** need that package.
 | `No such file: requirements.txt` | `cd` into `redonline-cdf-ingest` first |
 | `Set REDONLINE_API_KEY...` | Copy `.env.example` → `.env`, or keep `auth.api_key` in `endpoints.yaml` |
 | `REDONLINE_BASE_URL is required` | Set in `.env` or `base_url` in `endpoints.yaml` |
-| `CERTIFICATE_VERIFY_FAILED` | `python scripts/discover_rol_schema.py --insecure` or `REDONLINE_VERIFY_SSL=0` |
+| `CERTIFICATE_VERIFY_FAILED` | Use `--insecure` on both discovery and ingest (`python scripts/run_local.py --dry-run --insecure`), or set `REDONLINE_VERIFY_SSL=0` in project-root `.env` |
 | Hard to debug ingest pipeline | Prefer `notebooks/call_rol_apis.ipynb` or `discover_rol_schema.py` first |
 
 ## Tests

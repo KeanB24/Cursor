@@ -25,7 +25,7 @@ Ingest HSE / Red Online (ROL) data into Cognite Data Fusion RAW DB **`ROL-COR`**
 | CDF client id | `cb909a16-1087-4e06-9d11-8dfbd6ae1a5c` |
 | CDF tenant | `7a3c88ff-a5f6-449d-ac6d-e8e3aa508e37` |
 | CDF secret | in `.env` — Azure may reject if expired (`AADSTS7000215`); rotate if needed |
-| Corp SSL | `REDONLINE_VERIFY_SSL=0` or `--insecure` |
+| Corp SSL | `REDONLINE_VERIFY_SSL=0` in `.env`, or `--insecure` on **both** `discover_rol_schema.py` and `run_local.py` |
 
 ## ROL APIs
 1. `GET /v2/secure-clients/legapi-general/sites` → items at `sites`
@@ -67,8 +67,8 @@ python -m pip install -e .
 copy .env.example .env   # if missing
 python scripts/discover_rol_schema.py --insecure
 python scripts/run_local.py --mock --dry-run
-python scripts/run_local.py --dry-run          # live ROL, no CDF write
-python scripts/run_local.py                   # live ROL + CDF RAW write
+python scripts/run_local.py --dry-run --insecure   # live ROL, no CDF write
+python scripts/run_local.py --insecure             # live ROL + CDF RAW write
 ```
 
 ## Key files
@@ -83,7 +83,7 @@ python scripts/run_local.py                   # live ROL + CDF RAW write
 ## Issues solved along the way
 - Wrong cwd for pip (`requirements.txt` not found) → must `cd redonline-cdf-ingest`
 - Missing API key / base URL → `.env` + config fallbacks
-- `CERTIFICATE_VERIFY_FAILED` → `--insecure` / `REDONLINE_VERIFY_SSL=0`
+- `CERTIFICATE_VERIFY_FAILED` on dry-run → discovery had `--insecure` but ingest CLI did not; use `run_local.py --insecure` (now synced) / `REDONLINE_VERIFY_SSL=0`
 - `samples/rol/` missing after pull → was gitignored; ignore removed
 - Cognite secret invalid (`AADSTS7000215`) → may need new Azure client secret
 - Complex imports confused user → discovery/notebook are standalone; package is under `src/`

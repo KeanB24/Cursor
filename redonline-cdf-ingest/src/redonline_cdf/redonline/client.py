@@ -46,6 +46,17 @@ def _as_item_list(payload: Any, items_path: str | None) -> list[Any]:
     raise ValueError(f"Expected list (or object) at items_path={items_path!r}, got {type(items)}")
 
 
+def resolve_verify_ssl(value: bool | None = None) -> bool:
+    """Resolve TLS verification. False when REDONLINE_VERIFY_SSL is 0/false/no."""
+    if value is not None:
+        return value
+    return os.getenv("REDONLINE_VERIFY_SSL", "1").lower() not in {
+        "0",
+        "false",
+        "no",
+    }
+
+
 class RedOnlineClient:
     """Fetch paginated entity lists from Red Online using endpoints.yaml."""
 
@@ -58,6 +69,7 @@ class RedOnlineClient:
         mock: bool | None = None,
         fixtures_dir: Path | None = None,
         http_client: httpx.Client | None = None,
+        verify_ssl: bool | None = None,
     ) -> None:
         self._config = endpoints_config or load_endpoints()
         self.base_url = self._resolve_base_url(base_url)
@@ -69,15 +81,16 @@ class RedOnlineClient:
         )
         self.fixtures_dir = fixtures_dir or (project_root() / "fixtures")
         self._owns_http = http_client is None
-        verify_ssl = os.getenv("REDONLINE_VERIFY_SSL", "1").lower() not in {
-            "0",
-            "false",
-            "no",
-        }
+        self.verify_ssl = resolve_verify_ssl(verify_ssl)
         self._http = http_client or httpx.Client(
             timeout=self._timeout(),
-            verify=verify_ssl,
+            verify=self.verify_ssl,
         )
+        if not self.verify_ssl and self._owns_http:
+            logger.warning(
+                "TLS certificate verification disabled for Red Online "
+                "(REDONLINE_VERIFY_SSL=0 / --insecure)"
+            )
 
     def _resolve_base_url(self, base_url: str | None) -> str:
         if base_url:

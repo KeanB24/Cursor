@@ -57,6 +57,17 @@ def endpoints_config() -> dict:
     }
 
 
+def test_resolve_verify_ssl_env(monkeypatch: pytest.MonkeyPatch) -> None:
+    from redonline_cdf.redonline.client import resolve_verify_ssl
+
+    monkeypatch.delenv("REDONLINE_VERIFY_SSL", raising=False)
+    assert resolve_verify_ssl() is True
+    monkeypatch.setenv("REDONLINE_VERIFY_SSL", "0")
+    assert resolve_verify_ssl() is False
+    assert resolve_verify_ssl(True) is True
+    assert resolve_verify_ssl(False) is False
+
+
 def test_mock_fetch_sites(endpoints_config: dict) -> None:
     client = RedOnlineClient(
         endpoints_config=endpoints_config,
