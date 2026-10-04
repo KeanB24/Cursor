@@ -60,17 +60,46 @@ python scripts/run_local.py --mock --dry-run
 
 Confirms extract/map logic without calling HSE or Cognite.
 
-### 4. Live HSE pull only (no Cognite write)
+### 4. Discover live ROL response shapes (for RAW table design)
+
+Best way to design Cognite RAW tables: call each ROL API once, save the JSON,
+then build columns from the real fields.
+
+```powershell
+python scripts/discover_rol_schema.py
+```
+
+Optional — only some endpoints:
+
+```powershell
+python scripts/discover_rol_schema.py --endpoints list_sites list_tasks_by_user
+```
+
+This writes under `samples/rol/` (gitignored):
+
+| File | Purpose |
+|------|---------|
+| `<endpoint>_raw.json` | Full API response |
+| `<endpoint>_items.json` | Extracted row list (best effort) |
+| `schema_summary.md` | Field catalog + suggested `items_path` / id field |
+| `schema_summary.json` | Same summary as JSON |
+
+Then:
+
+1. Open `samples/rol/*_raw.json` and confirm the shape.
+2. Set `items_path` in `config/endpoints.yaml` if responses are wrapped (e.g. `data` / `items`).
+3. Set `id_field` in `config/settings.yaml` from the suggested key.
+4. Map properties in `config/field_maps.yaml` using `schema_summary.md`.
+
+### 5. Live HSE pull only (no Cognite write)
 
 ```powershell
 python scripts/run_local.py --dry-run
 ```
 
-Calls the real HSE APIs with `X-ROL-API-KEY`. If responses are wrapped
-(e.g. `{"data":[...]}`) instead of a bare list, set `items_path` in
-`config/endpoints.yaml` accordingly.
+Calls the real HSE APIs with `X-ROL-API-KEY` and prints what would be staged/loaded.
 
-### 5. Full ingest into Cognite
+### 6. Full ingest into Cognite
 
 ```powershell
 python scripts/run_local.py
@@ -78,7 +107,7 @@ python scripts/run_local.py
 
 Pulls HSE → stages RAW → upserts into the Action Item Management views.
 
-### 6. Optional: single entity
+### 7. Optional: single entity
 
 ```powershell
 python scripts/run_local.py --entities tasks
@@ -86,7 +115,7 @@ python scripts/run_local.py --entities tasks
 
 Also valid: `sites`, `users`, `references`.
 
-### 7. Cognite Function (later)
+### 8. Cognite Function (later)
 
 Deploy with `handler.py` as the entrypoint:
 
