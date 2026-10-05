@@ -1,4 +1,4 @@
-# .env
+.env
 .venv/
 venv/
 # Live ROL/HSE API captures may contain PII — keep local only
