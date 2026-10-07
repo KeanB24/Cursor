@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Plant — Team Succession Plan</title>
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --ink: #1a1a1a;
+      --muted: #5c5c5c;
+      --line: #d4d0c8;
+      --card: #fff;
+      --lead: #1e3a5f;
+      --soft: #eef2f6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 15px/1.45 "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 28px 20px 48px; }
+    .eyebrow { font-size: 11px; letter-spacing: 0.06em; color: var(--muted); text-transform: uppercase; margin: 0 0 8px; }
+    h1 { font-size: 28px; font-weight: 650; margin: 0 0 10px; letter-spacing: -0.02em; }
+    h2 { font-size: 18px; margin: 28px 0 10px; }
+    h3 { font-size: 15px; margin: 0 0 8px; }
+    p { margin: 0 0 12px; color: var(--muted); }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0; }
+    .stat { background: var(--card); border: 1px solid var(--line); padding: 14px 16px; }
+    .stat b { display: block; font-size: 20px; margin-bottom: 4px; }
+    .stat span { font-size: 12px; color: var(--muted); }
+    .callout { background: var(--soft); border: 1px solid var(--line); padding: 14px 16px; margin: 16px 0; }
+    .callout strong { display: block; margin-bottom: 6px; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0 18px; }
+    .pill { border: 1px solid var(--line); background: var(--card); padding: 4px 10px; font-size: 13px; border-radius: 999px; }
+    .pill.on { background: var(--lead); color: #fff; border-color: var(--lead); }
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .card { background: var(--card); border: 1px solid var(--line); padding: 12px 14px; margin-bottom: 8px; }
+    .card.lead { border-color: var(--lead); }
+    .card .name { font-weight: 650; margin-bottom: 4px; display: flex; justify-content: space-between; gap: 8px; }
+    .card .scope { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    .card .move { font-size: 13px; }
+    .tag { font-size: 11px; color: var(--muted); border: 1px solid var(--line); padding: 1px 6px; border-radius: 999px; }
+    table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); font-size: 13px; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: var(--soft); font-weight: 600; }
+    tr:last-child td { border-bottom: 0; }
+    .sketch { background: var(--card); border: 1px solid var(--line); padding: 14px 16px; }
+    .sketch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .muted { color: var(--muted); font-size: 13px; }
+    hr { border: 0; border-top: 1px solid var(--line); margin: 28px 0; }
+    footer { font-size: 12px; color: var(--muted); margin-top: 20px; }
+    @media (max-width: 720px) {
+      .stats, .cols, .sketch-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: #fff; }
+      .wrap { max-width: none; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">Lo-fi brief · For Piya · Confidential</p>
+    <h1>Digital Plant — Team Succession Plan</h1>
+    <p>
+      Proposed path after Neel Bose moves to an independent Architect role in the Data &amp; AI CoE.
+      Goal: clear ownership for Apps and Data delivery on Cognite Data Fusion, with timed growth for key people.
+    </p>
+
+    <div class="stats">
+      <div class="stat"><b>Dec 2026</b><span>Leadership handoff</span></div>
+      <div class="stat"><b>2 managers</b><span>Apps + Data leads</span></div>
+      <div class="stat"><b>2027–28</b><span>Next-level promotions</span></div>
+    </div>
+
+    <div class="callout">
+      <strong>Transition intent (confirmed direction)</strong>
+      CIO visit (Sep) + Piya alignment: Neel exits Delivery Lead → Architect in Data &amp; AI CoE.
+      Aniketh promoted to Manager for Apps performance and delivery.
+      Rajendra title changes Principal → Manager for Data performance and delivery.
+      AI continues under Julles Mitoura (out of scope for this succession grid).
+    </div>
+
+    <h2>1. Target operating model</h2>
+    <p>Wireframe of reporting after handoff.</p>
+    <div class="pills">
+      <span class="pill">Piya (sponsor)</span>
+      <span>→</span>
+      <span class="pill on">Aniketh · Manager Apps</span>
+      <span class="pill on">Rajendra · Manager Data</span>
+      <span class="pill">Julles · AI Lead</span>
+    </div>
+
+    <div class="cols">
+      <section>
+        <h2>2. Apps succession</h2>
+        <div class="card lead">
+          <div class="name">Aniketh Reddy <span class="tag">Lead · Dec 2026</span></div>
+          <div class="scope">OEE, User Mgmt, Energy</div>
+          <div class="move">Sr. Specialist → <b>Manager (Apps)</b></div>
+        </div>
+        <p class="muted">Team under Aniketh</p>
+        <div class="card">
+          <div class="name">Zuber <span class="tag">May 2027</span></div>
+          <div class="scope">Event Management, Event Analysis</div>
+          <div class="move">Sr. Specialist → <b>Principal</b> · Reports to Aniketh</div>
+        </div>
+        <div class="card">
+          <div class="name">Surendra <span class="tag">May 2027</span></div>
+          <div class="scope">Global KPI Bank, AIM, OFWA</div>
+          <div class="move">Sr. Specialist → <b>Principal</b> · Reports to Aniketh</div>
+        </div>
+        <div class="card">
+          <div class="name">Hari <span class="tag">Dec 2027</span></div>
+          <div class="scope">Checklist Management, GPV/BK</div>
+          <div class="move">Principal → <b>Sr. Principal</b> · Reports to Aniketh</div>
+        </div>
+        <div class="card">
+          <div class="name">Daniel Oliveira <span class="tag">Dec 2026</span></div>
+          <div class="scope">MOC</div>
+          <div class="move">Adv. Specialist → <b>Sr. Specialist</b> · Reports to Zuber</div>
+        </div>
+        <div class="card">
+          <div class="name">Sridhar <span class="tag">May 2028</span></div>
+          <div class="scope">MOC, Catalyst Management</div>
+          <div class="move">Adv. Specialist → <b>Sr. Specialist</b> · Reports to Aniketh</div>
+        </div>
+        <div class="card">
+          <div class="name">Prachi <span class="tag">May 2028</span></div>
+          <div class="scope">MOC, AIM, GKPI</div>
+          <div class="move">Adv. Specialist → <b>Sr. Specialist</b> · Reports to Aniketh</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>3. Data succession</h2>
+        <div class="card lead">
+          <div class="name">Rajendra <span class="tag">Lead · Dec 2026</span></div>
+          <div class="scope">CDP, Ingestion</div>
+          <div class="move">Principal → <b>Manager (Data)</b></div>
+        </div>
+        <p class="muted">Team under Rajendra</p>
+        <div class="card">
+          <div class="name">Hima <span class="tag">May 2027</span></div>
+          <div class="scope">Data Modelling &amp; Contextualization</div>
+          <div class="move">Sr. Specialist → <b>Principal</b> · Reports to Rajendra</div>
+        </div>
+        <div class="card">
+          <div class="name">Haritha <span class="tag">—</span></div>
+          <div class="scope">Data Modelling &amp; Contextualization</div>
+          <div class="move">Continues as <b>Sr. Specialist</b> · Reports to Rajendra</div>
+        </div>
+        <div class="card">
+          <div class="name">Amar Kumar <span class="tag">May 2028</span></div>
+          <div class="scope">CDP, Ingestion, Data Modelling</div>
+          <div class="move">Adv. Specialist → <b>Sr. Specialist</b> · Reports to Rajendra</div>
+        </div>
+      </section>
+    </div>
+
+    <hr />
+
+    <h2>4. Promotion &amp; title calendar</h2>
+    <table>
+      <thead>
+        <tr><th>When</th><th>Person</th><th>Track</th><th>From → To</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Dec 2026</td><td>Aniketh Reddy</td><td>Apps</td><td>Sr. Specialist → Manager</td><td>Owns Apps team performance</td></tr>
+        <tr><td>Dec 2026</td><td>Rajendra</td><td>Data</td><td>Principal → Manager</td><td>Title change; same ownership scope</td></tr>
+        <tr><td>Dec 2026</td><td>Daniel Oliveira</td><td>Apps</td><td>Adv. Specialist → Sr. Specialist</td><td>Reports to Zuber</td></tr>
+        <tr><td>May 2027</td><td>Zuber</td><td>Apps</td><td>Sr. Specialist → Principal</td><td>Events domain depth</td></tr>
+        <tr><td>May 2027</td><td>Surendra</td><td>Apps</td><td>Sr. Specialist → Principal</td><td>KPI / AIM / OFWA</td></tr>
+        <tr><td>May 2027</td><td>Hima</td><td>Data</td><td>Sr. Specialist → Principal</td><td>Modelling &amp; contextualization</td></tr>
+        <tr><td>Dec 2027</td><td>Hari</td><td>Apps</td><td>Principal → Sr. Principal</td><td>Checklist Mgmt, GPV/BK; reports to Aniketh</td></tr>
+        <tr><td>May 2028</td><td>Sridhar</td><td>Apps</td><td>Adv. Specialist → Sr. Specialist</td><td>MOC, Catalyst Mgmt</td></tr>
+        <tr><td>May 2028</td><td>Prachi</td><td>Apps</td><td>Adv. Specialist → Sr. Specialist</td><td>MOC, AIM, GKPI</td></tr>
+        <tr><td>May 2028</td><td>Amar Kumar</td><td>Data</td><td>Adv. Specialist → Sr. Specialist</td><td>CDP / ingestion / modelling</td></tr>
+      </tbody>
+    </table>
+
+    <h2>5. Apps reporting sketch (post-handoff)</h2>
+    <div class="sketch">
+      <h3>Aniketh — Manager</h3>
+      <div class="sketch-grid">
+        <div>
+          <strong>Principal bench (reports to Aniketh)</strong>
+          <p class="muted" style="margin-top:8px">
+            Zuber → Principal May 2027 — Events<br />
+            Surendra → Principal May 2027 — GKPI, AIM, OFWA<br />
+            Hari → Sr. Principal Dec 2027 — Checklist, GPV/BK<br />
+            Daniel → Sr. Specialist Dec 2026, reports to Zuber
+          </p>
+        </div>
+        <div>
+          <strong>Adv. → Sr. path (May 2028)</strong>
+          <p class="muted" style="margin-top:8px">
+            Sridhar — MOC, Catalyst<br />
+            Prachi — MOC, AIM, GKPI<br />
+            Aniketh domain today: OEE, User Mgmt, Energy
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2>6. Data reporting sketch (post-handoff)</h2>
+    <div class="sketch">
+      <h3>Rajendra — Manager</h3>
+      <div class="sketch-grid">
+        <div>
+          <strong>Principal track</strong>
+          <p class="muted" style="margin-top:8px">Hima → Principal May 2027<br />Modelling &amp; contextualization</p>
+        </div>
+        <div>
+          <strong>Specialist bench</strong>
+          <p class="muted" style="margin-top:8px">Haritha — Sr. Specialist (stable)<br />Amar → Sr. Specialist May 2028</p>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <h2>7. Asks for Piya</h2>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Decision</th><th>Why it matters</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Endorse Dec 2026 Manager moves (Aniketh + Rajendra)</td><td>Locks ownership before Neel fully transitions</td></tr>
+        <tr><td>2</td><td>Align May 2027 Principal slate (Zuber, Surendra, Hima)</td><td>Creates depth under new managers; retention signal</td></tr>
+        <tr><td>3</td><td>Endorse Hari Principal → Sr. Principal (Dec 2027)</td><td>Senior IC depth under Aniketh for Checklist / GPV/BK</td></tr>
+        <tr><td>4</td><td>Park May 2028 Sr. Specialist moves for mid-year review</td><td>Keeps ladder visible without over-committing budget now</td></tr>
+        <tr><td>5</td><td>Confirm Daniel → Zuber reporting line</td><td>Only cross-report change in Apps; needs clarity with Aniketh</td></tr>
+        <tr><td>6</td><td>Clarify Haritha growth path (optional follow-up)</td><td>Currently continuity-only; may want a dated checkpoint</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout" style="margin-top:20px">
+      <strong>How to use this brief</strong>
+      Walk Piya top-to-bottom: intent → org wireframe → calendar → asks.
+      Treat boxes as discussion placeholders, not HR-approved titles.
+    </div>
+
+    <footer>
+      Prepared by Neel Bose · Digital Manufacturing / Digital Plant · Draft for discussion with Piya
+    </footer>
+  </div>
+</body>
+</html>
