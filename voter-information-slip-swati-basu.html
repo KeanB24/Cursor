@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voter Information Slip — Swati Basu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Noto+Sans+Bengali:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --line: #2a2a2a;
+      --paper: #f7f4ee;
+      --label: #f3f0e8;
+      --muted: #3d3d3d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #d9d4cb;
+      color: var(--ink);
+      font-family: "Noto Sans Bengali", "Source Serif 4", "Times New Roman", serif;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 12px 20px;
+      background: #243044;
+      color: #f4f1ea;
+      font-family: "Segoe UI", sans-serif;
+      font-size: 14px;
+    }
+
+    .toolbar p { margin: 0; max-width: 760px; line-height: 1.4; }
+    .toolbar button {
+      border: 0;
+      background: #f4f1ea;
+      color: #243044;
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .sheet-wrap {
+      padding: 28px 16px 48px;
+    }
+
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: var(--paper);
+      padding: 16mm 12mm 14mm;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .hand {
+      font-family: "Caveat", cursive;
+      font-size: 42px;
+      text-align: center;
+      margin: 0 0 18px;
+      color: #24365c;
+      letter-spacing: 0.5px;
+    }
+
+    .slip {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1.5px solid var(--line);
+      background: #fff;
+      font-size: 12.5px;
+      line-height: 1.35;
+    }
+
+    .slip td {
+      border: 1px solid var(--line);
+      padding: 6px 8px;
+      vertical-align: middle;
+    }
+
+    .head-logo {
+      width: 78px;
+      text-align: center;
+      background: #fff;
+      padding: 8px 4px;
+    }
+
+    .emblem {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 4px;
+    }
+
+    .emblem-caption {
+      font-size: 8px;
+      letter-spacing: 0.4px;
+      font-weight: 700;
+    }
+
+    .head-title {
+      text-align: center;
+      padding: 8px 10px 10px;
+      border-bottom: 1.5px solid var(--line);
+    }
+
+    .head-title .eci {
+      font-family: "Source Serif 4", "Times New Roman", serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+    }
+
+    .head-title .bn {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .head-title .election {
+      margin-top: 3px;
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .head-title .slipname {
+      margin-top: 2px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .idbox {
+      width: 148px;
+      padding: 0;
+      vertical-align: top;
+    }
+
+    .idbox table {
+      width: 100%;
+      border-collapse: collapse;
+      height: 100%;
+    }
+
+    .idbox td {
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      padding: 7px 8px;
+    }
+
+    .idbox tr:last-child td { border-bottom: 0; }
+
+    .idbox .k {
+      font-size: 11px;
+      color: var(--muted);
+      width: 72px;
+    }
+
+    .idbox .v {
+      font-weight: 700;
+      text-align: right;
+      font-size: 16px;
+      font-family: "Source Serif 4", "Times New Roman", serif;
+    }
+
+    .qr {
+      width: 118px;
+      text-align: center;
+      background: #fff;
+      padding: 10px 6px;
+    }
+
+    .qr-box {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 8px;
+      border: 1px dashed #8a8478;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      color: #5c574e;
+      font-size: 10px;
+      line-height: 1.3;
+      background:
+        repeating-linear-gradient(90deg, #f7f4ee, #f7f4ee 3px, #fff 3px, #fff 6px),
+        repeating-linear-gradient(#f7f4ee, #f7f4ee 3px, #fff 3px, #fff 6px);
+    }
+
+    .qr small {
+      display: block;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .lbl {
+      background: var(--label);
+      font-weight: 600;
+      width: 22%;
+    }
+
+    .lbl .en {
+      display: block;
+      font-family: "Source Serif 4", "Times New Roman", serif;
+      font-size: 12px;
+    }
+
+    .val {
+      font-weight: 700;
+      width: 28%;
+    }
+
+    .val .en {
+      display: block;
+      font-family: "Source Serif 4", "Times New Roman", serif;
+      font-weight: 700;
+    }
+
+    .tall { height: 58px; }
+
+    .footer {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: -1px;
+      border: 1.5px solid var(--line);
+      border-top: 0;
+      background: #fff;
+      font-size: 12px;
+    }
+
+    .footer td {
+      border: 1px solid var(--line);
+      padding: 6px 8px;
+      vertical-align: top;
+    }
+
+    .footer .side {
+      width: 38%;
+      background: #fff;
+      line-height: 1.55;
+    }
+
+    .footer .k { font-weight: 700; }
+    .footer .v { font-weight: 700; }
+
+    .disclaimer {
+      margin-top: 8px;
+      font-size: 11.5px;
+      line-height: 1.45;
+    }
+
+    .disclaimer strong { font-weight: 700; }
+
+    .note {
+      margin-top: 14px;
+      font-family: "Segoe UI", sans-serif;
+      font-size: 11.5px;
+      color: #3e4450;
+      line-height: 1.45;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .toolbar, .note { display: none; }
+      .sheet-wrap { padding: 0; }
+      .sheet {
+        box-shadow: none;
+        width: auto;
+        min-height: auto;
+        padding: 8mm;
+      }
+      @page { size: A4; margin: 8mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <p>Personal reference copy of your voter details, laid out like the Election Commission slip. It is not issued by the Commission and is not an identity document.</p>
+    <button type="button" onclick="window.print()">Print / Save PDF</button>
+  </div>
+
+  <div class="sheet-wrap">
+    <article class="sheet">
+      <p class="hand">Swati Basu</p>
+
+      <table class="slip">
+        <colgroup>
+          <col style="width: 18%" />
+          <col style="width: 27%" />
+          <col style="width: 27%" />
+          <col style="width: 28%" />
+        </colgroup>
+        <tr>
+          <td class="head-logo">
+            <svg class="emblem" viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="32" cy="32" r="30" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#1a1a1a" stroke-width="0.6"/>
+              <path d="M32 10 v8 M32 14 h-6 l6 8 6-8 h-6" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+              <rect x="22" y="28" width="20" height="14" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+              <path d="M26 42 v6 M32 42 v8 M38 42 v6" stroke="#1a1a1a" stroke-width="1.2"/>
+              <path d="M18 50 h28" stroke="#1a1a1a" stroke-width="1.2"/>
+            </svg>
+            <div class="emblem-caption">ECI</div>
+          </td>
+          <td class="head-title" colspan="2">
+            <div class="eci">ELECTION COMMISSION OF INDIA</div>
+            <div class="bn">ভারতের নির্বাচন কমিশন</div>
+            <div class="election">General Election to the Legislative Assembly — পশ্চিমবঙ্গ বিধানসভা নির্বাচন</div>
+            <div class="slipname">Voter Information Slip — ভোটার তথ্য স্লিপ</div>
+          </td>
+          <td class="idbox">
+            <table>
+              <tr>
+                <td class="k">Part No.<br />অংশ নং</td>
+                <td class="v">233</td>
+              </tr>
+              <tr>
+                <td class="k">Serial No.<br />ক্রমিক নং</td>
+                <td class="v">990</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="qr" rowspan="10">
+            <div class="qr-box">Official QR is printed only on the slip issued by the Election Commission</div>
+            <small>Scan By VHA/BLO App<br />appears on the issued slip</small>
+          </td>
+          <td class="lbl">রাজ্য<br /><span class="en">State</span></td>
+          <td class="val" colspan="2">পশ্চিমবঙ্গ<br /><span class="en">West Bengal</span></td>
+        </tr>
+        <tr>
+          <td class="lbl">বিধানসভা নির্বাচন ক্ষেত্র<br /><span class="en">Assembly Constituency</span></td>
+          <td class="val" colspan="2">৯৭ - গাইঘাটা (এস.সি.)<br /><span class="en">97 - Gaighata (SC)</span></td>
+        </tr>
+        <tr>
+          <td class="lbl">নাম<br /><span class="en">Name</span></td>
+          <td class="val" colspan="2">স্বাতী বসু<br /><span class="en">Swati Basu</span></td>
+        </tr>
+        <tr>
+          <td class="lbl">লিঙ্গ<br /><span class="en">Gender</span></td>
+          <td class="val" colspan="2">মহিলা<br /><span class="en">Female</span></td>
+        </tr>
+        <tr>
+          <td class="lbl">ইপিআইসি নম্বর<br /><span class="en">EPIC No.</span></td>
+          <td class="val" colspan="2"><span class="en">DKJ3430501</span></td>
+        </tr>
+        <tr>
+          <td class="lbl">আত্মীয়ের নাম<br /><span class="en">Relative's Name</span></td>
+          <td class="val" colspan="2">বিভাস বসু<br /><span class="en">Bibhas Basu</span></td>
+        </tr>
+        <tr>
+          <td class="lbl">অংশ নং<br /><span class="en">Part No.</span></td>
+          <td class="val" colspan="2"><span class="en">233</span></td>
+        </tr>
+        <tr>
+          <td class="lbl">অংশের নাম<br /><span class="en">Part Name</span></td>
+          <td class="val" colspan="2"><span class="en">Gobaradanga Kalejiyet School (Pashchim O Purb)</span></td>
+        </tr>
+        <tr>
+          <td class="lbl">ক্রমিক নং<br /><span class="en">Serial No.</span></td>
+          <td class="val" colspan="2"><span class="en">990</span></td>
+        </tr>
+        <tr>
+          <td class="lbl tall">ভোটগ্রহণ কেন্দ্রের নাম<br /><span class="en">Polling Station Name</span></td>
+          <td class="val tall" colspan="2"><span class="en">Gobaradanga Kalejiyet School (Pashchim O Purb), Room-2, Gapur</span></td>
+        </tr>
+      </table>
+
+      <table class="footer">
+        <tr>
+          <td class="side" rowspan="5">
+            <div><span class="k">Date of Poll :</span> <span class="v">No elections scheduled currently</span></div>
+            <div>ভোটগ্রহণের তারিখ</div>
+            <div style="height: 10px"></div>
+            <div><span class="k">Timings :</span> <span class="v">Not scheduled</span></div>
+            <div>সময়</div>
+            <div class="disclaimer">
+              <strong>This will not be accepted as an identification document for voting.</strong><br />
+              এই স্লিপ ভোটদানের জন্য পরিচয়পত্র হিসেবে গ্রহণ করা হবে না।
+            </div>
+          </td>
+          <td class="k">Parliamentary Constituency</td>
+          <td>14 - Bangaon (SC)</td>
+        </tr>
+        <tr>
+          <td class="k">Age</td>
+          <td>59</td>
+        </tr>
+        <tr>
+          <td class="k">CEO WEBSITE</td>
+          <td>https://ceowestbengal.wb.gov.in/</td>
+        </tr>
+        <tr>
+          <td class="k">CEO Contact Center / Toll Free No.</td>
+          <td>1950</td>
+        </tr>
+        <tr>
+          <td class="k">DISTRICT ELECTION OFFICE</td>
+          <td>Office of the District Magistrate &amp; District Election Officer, North 24 Parganas<br />DEO Helpline No. : 1950</td>
+        </tr>
+      </table>
+
+      <p class="note">
+        Filled from the voter details in your second image. Assembly constituency 97 Gaighata is reserved (SC) and falls in North 24 Parganas, under 14 Bangaon. The sample slip’s poll date, South 24 Parganas office, and QR code belong to a different voter and are not copied here. Your record says no election is scheduled. For the official slip, use the Voter Helpline app or https://ceowestbengal.wb.gov.in/.
+      </p>
+    </article>
+  </div>
+</body>
+</html>
